@@ -41,16 +41,18 @@ require 'builderFunctions.php';
 </body>
 <script type="text/javascript">
     function getRace(){
-        $("#description").html("");
-        var race=$('#race').val();
+        //used to get race info right now it's set to work on change of the drop down but should be able to be used with whatever selection you think looks nice
+        $("#description").html("");// clears the destination tag
+        var race=$('#race').val();//grabs the value of the input named race
         if(race == "Half-Orc") {
+            //all races follow this structure for their content
             var desc = "\
             When alliances between humans and orcs are sealed by marriages, half-orcs are born.\
             Some half-orcs rise to become proud chiefs of orc tribes, their human blood giving them an edge over their full-blooded orc rivals.\
             Some venture into the world to prove their worth among humans and other more civilized races.\
             Many of these become adventurers, achieving greatness for their mighty deeds and notoriety for their barbaric customs and savage fury.\
-            "
-            var $p = $("<p>"+desc+"</p>");
+            "//variable contains race description text 
+            var $p = $("<p>"+desc+"</p>"); //puts it in a tag
             var lis = "<li><b>Ability Score Increase.</b>Your Strength score increases by 2, and your Constitution score increases by 1.</li>\
                         <li><b>Age.</b>Half-orcs mature a little faster than humans, reaching adulthood around age 14. They age noticeably faster and rarely live longer than 75 years.</li>\
                         <li><b>Alignment.</b>Half-orcs inherit a tendency toward chaos from their orc parents and are not strongly inclined toward good. Half-orcs raised among orcs and willing to live out their lives among them are usually evil.</li>\
@@ -60,11 +62,12 @@ require 'builderFunctions.php';
                         <li><b>Menacing.</b>You gain proficiency in the Intimidation skill.</li>\
                         <li><b>Relentless Endurance.</b>When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can't use this feature again until you finish a long rest.</li>\
                         <li><b>Savage Attacks.</b>When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damage of the critical hit.</li>\
-                        <li><b>Languages.</b>You can speak, read, and write Common and Orc. Orc is a harsh, grating language with hard consonants. It has no script of its own but is written in the Dwarvish script.</li>"
-            var $ul = $("<ul>" + lis + "</ul>");
-            var $final = $p.append($ul);
+                        <li><b>Languages.</b>You can speak, read, and write Common and Orc. Orc is a harsh, grating language with hard consonants. It has no script of its own but is written in the Dwarvish script.</li>\
+                        "//list of abilities, will sometimes have sublists
+            var $ul = $("<ul>" + lis + "</ul>");//puts it in a tag
+            var $final = $p.append($ul); //adds the contents together
 
-            $("#description").append($final);
+            $("#description").append($final);//adds the contents to the destination tag
         }
         else if(race == "Human"){
             var desc = "\
