@@ -11,11 +11,11 @@ session_start();
     <title>Document</title>
 </head>
 <body>
-<form method="POST" action="job.php">  
+<form method="POST" action="class.php">  
         <label for="job">Choose a class:</label>    
         <select name="job" id="job"  onchange="getJob()">
             <option value="">------</option>
-            <option value="Barbarian">Barbarian</optidon>
+            <option value="Barbarian">Barbarian</option>
             <option value="Bard">Bard</option>
             <option value="Cleric">Cleric</option>
             <option value="Druid">Druid</option>
