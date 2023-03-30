@@ -5,6 +5,7 @@
 	let playerRace = "";
 	let playerClass = "";
 	let dynamicRendering = true;
+	let editToggle = true;
 	$('document').ready(function() {
 		$("#importBtn").on('change', function() {
 			var reader = new FileReader();
@@ -767,5 +768,17 @@
 		$(":input[name=levelNineSpellFive]").val(jsonObj.levelNineSpellFive);
 		$(":input[name=levelNineSpellSix]").val(jsonObj.levelNineSpellSix);
 		$(":input[name=levelNineSpellSeven]").val(jsonObj.levelNineSpellSeven);
+	}
+	function toggleEdit(){
+		if (editToggle == true){
+			editToggle = false;
+			$("#editBtn").html("View")
+			$(":input").prop("disabled", true);
+			$("#editBtn").prop("disabled",false);
+		} else if (editToggle == false){
+			editToggle = true;
+			$("#editBtn").html("Edit")
+			$(":input").prop("disabled", false);
+		}
 	}
 </script>

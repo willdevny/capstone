@@ -15,6 +15,10 @@
 			<input type="checkbox" name="dynamicCheckbox" id="dynamicCheckbox" checked>
 			<label for="dynamicCheckbox" title="If Dynamic Rendering is turned one, the character sheet will fill in certian inputs based on previous information you've inputted. Ex. Speed, Hit Points, Hit Dice">Dynamic Rendering</label>
 		</div>
+		<div id="edit">
+			<label for="editBtn">Mode:</label>
+			<button name="editBtn" id="editBtn" onclick="toggleEdit()">Edit</button>
+		</div>
 		<div id="download">
 			<button id="downloadBtn" onclick="downloadJSON({filename: 'characterData.json'})">Download</button>
 		</div>
