@@ -41,7 +41,7 @@ require 'builderFunctions.php';
 </body>
 <script type="text/javascript">
     function getRace(){
-        //used to get race info right now it's set to work on change of the drop down but should be able to be used with whatever selection you think looks nice
+        //used to get race info; right now it's set to work on change of the drop down but should be able to be used with whatever selection you think looks nice
         $("#description").html("");// clears the destination tag
         var race=$('#race').val();//grabs the value of the input named race
         if(race == "Half-Orc") {
