@@ -10,6 +10,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Document</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	</head>
 	<body>
 		<div id="dynamicRender">
 			<input type="checkbox" name="dynamicCheckbox" id="dynamicCheckbox" checked>
@@ -93,7 +94,7 @@
 				</tr>
 			</table>
 		</div>
-		<div id="savingThronumber
+		<div id="savingThrows">
 			<table>
 				<tr>
 					<td><input type="checkbox" name="strProf" class="profCheckbox" id="strProf"></td>
