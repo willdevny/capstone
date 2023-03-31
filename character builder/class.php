@@ -35,8 +35,8 @@ require 'builderFunctions.php';
         <input type="radio" id="noroll" name="gold" onchange="getJob()" checked>
         <label for="roll">Roll for gold:</label>
         <input type="radio" id="roll" name="gold" onchange="getJob()">
-        <input type="submit" name="job" value="Submit" >
     <form method="POST" action="class.php" name="jobstuff" id="jobstuff">
+    <input type="submit" name="job" value="Submit"  form="jobstuff">
     <div name="description" id="description"></div>
     
 </body>
@@ -704,7 +704,7 @@ require 'builderFunctions.php';
                         <button type = "button" onclick="rollGold(5, 10)">ROLL</button>'
             var $feats = "<h1>Spellcasting</h1>\
                         <p>You have learned to untangle and reshape the fabric of reality in harmony with your wishes and music. Your spells are part of your vast repertoire, magic that you can tune to different situations.</p>\
-                        <h1>cantrips<h1>\
+                        <h1>cantrips</h1>\
                         <p>You know two cantrips of your choice from the bard spell list. You learn additional bard cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Bard table.</p>\
                         <h1>Spell Slots</h1>\
                         <p>The Bard table shows how many spell slots you have to cast your bard spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest. For example, if you know the 1st-level spell Cure Wounds and have a 1st-level and a 2nd-level spell slot available, you can cast Cure Wounds using either slot.</p>\
@@ -1117,7 +1117,7 @@ require 'builderFunctions.php';
                         <button type = "button" onclick="rollGold(5, 10)">ROLL</button>'
             var $feats = "<h1>Spellcasting</h1>\
                         <p>As a conduit for divine power, you can cast cleric spells.</p>\
-                        <h1>cantrips<h1>\
+                        <h1>cantrips</h1>\
                         <p>At 1st level, you know three cantrips of your choice from the cleric spell list. You learn additional cleric cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Cleric table.</p>\
                         <h1>Spell Slots</h1>\
                         <p>The Cleric table shows how many spell slots you have to cast your cleric spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.</p>\
@@ -1530,7 +1530,7 @@ require 'builderFunctions.php';
                         <button type = "button" onclick="rollGold(2, 10)">ROLL</button>'
             var $feats = "<h1>Spellcasting</h1>\
                         <p>Drawing on the divine essence of nature itself, you can cast spells to shape that essence to your will.</p>\
-                        <h1>cantrips<h1>\
+                        <h1>cantrips</h1>\
                         <p>At 1st level, you know two cantrips of your choice from the druid spell list. You learn additional druid cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Druid table.</p>\
                         <h1>Spell Slots</h1>\
                         <p>The Druid table shows how many spell slots you have to cast your druid spells of 1st level and higher. To cast one of these druid spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.</p>\
