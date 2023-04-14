@@ -186,7 +186,7 @@
 					<td><label for="nature">Nature</label></td>
 				</tr>
 				<tr>
-					<td><input type="checkbox" name="perceptionPzrof" class="skillProf"></td>
+					<td><input type="checkbox" name="perceptionProf" class="skillProf"></td>
 					<td><input type="number" name="perception" class="skillInputs"></td>
 					<td><label for="perception">Perception</label></td>
 				</tr>

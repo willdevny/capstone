@@ -954,4 +954,7 @@
 		</div>
 
 </body>
+<?php
+		require 'character-viewer.php';
+?>
 </html>
