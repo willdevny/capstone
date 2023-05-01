@@ -1,0 +1,15 @@
+create table users (
+	Id Serial,
+	Username text,
+	Email text,
+	Password text,
+	Primary Key(Id)
+);
+
+create table characters (
+	CharacterID Serial,
+	UserId int,
+	Character text,
+	Primary Key(CharacterId),
+	Foreign Key(UserId) References users(Id)
+);
