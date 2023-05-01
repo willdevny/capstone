@@ -1,5 +1,4 @@
 <?php
-session_start();
 require 'builderFunctions.php';
 ?>
 <!DOCTYPE html>
@@ -12,7 +11,7 @@ require 'builderFunctions.php';
     <title>Race</title>
 </head>
 <body>
-    <form method="POST" action="race.php">
+    <form method="POST">
         <label for="race">Choose a race:</label>    
         <select name="race" id="race" onchange="getRace()">
             <option value="">------</option>
