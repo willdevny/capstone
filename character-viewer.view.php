@@ -86,7 +86,7 @@
 					<td><label for="strThrow">Strength</label></td>
 				</tr>
 				<tr>
-					<td><input disabled type="checkbox" name="sdexProf" class="profCheckbox" id="dexProf"></td>
+					<td><input disabled type="checkbox" name="dexProf" class="profCheckbox" id="dexProf"></td>
 					<td><input disabled type="number" name="dexThrow" id="dexThrow"></td>
 					<td><label for="dexThrow">Dexterity</label></td>
 				</tr>
@@ -170,7 +170,7 @@
 					<td><label for="nature">Nature</label></td>
 				</tr>
 				<tr>
-					<td><input disabled type="checkbox" name="perceptionPzrof" class="skillProf"></td>
+					<td><input disabled type="checkbox" name="perceptionProf" class="skillProf"></td>
 					<td><input disabled type="number" name="perception" class="skillInputs"></td>
 					<td><label for="perception">Perception</label></td>
 				</tr>
@@ -954,4 +954,7 @@
 		</div>
 
 </body>
+<?php
+		require 'character-viewer.php';
+?>
 </html>

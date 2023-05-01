@@ -14,12 +14,15 @@ if (!isset($_SESSION)) session_start();
 </head>
 
 <body>
-	<p>Import your character sheet below:</p>
-	<div id="dropBox">
-		<span id="chooseFileBtn">Choose files</span>
-		<span id="dropBoxText">or drag and drop files here</span>
-		<input id="fileInput" type="file" multiple>
-	</div>
+	<form id="inputForm" action="character-viewer.view.php">
+		<label for="fileImport">Import your character sheet below:</label>
+		<div id="dropBox">
+			<span id="chooseFileBtn">Choose files</span>
+			<span id="dropBoxText">or drag and drop files here</span>
+			<input name="fileImport" id="fileInput" type="file" accept=".json">
+		</div>
+		<input type="submit" value="submit">
+	</form>
 </body>
 
 </html>
