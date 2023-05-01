@@ -14,7 +14,7 @@
 		let fileReader = new FileReader();
             fileReader.onload = function () {
                 let parsedJSON = JSON.parse(fileReader.result);
-                lssave(parsedJSON);                 
+                lssave(parsedJSON);
             }
             fileReader.readAsText(document.querySelector('#fileInput').files[0]);
 	})

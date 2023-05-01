@@ -1,3 +1,6 @@
+<?php
+    if (!isset($_SESSION)) session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,34 +15,28 @@
         <header>
             <div class="horizontal-container home-nav nav">
                 <!-- Open Menu For Profile Options -->
-                <ion-icon class="profile-button" name="person-circle-outline"></ion-icon>
+                <a href="accounts.view.php"><ion-icon class="profile-button" name="person-circle-outline"></ion-icon></a>
             </div>
         </header>
         <article id="landing-page">
             <div class="horizontal-container flex-center">
                 <div class="left-directory-icon directory-icon">
-                    <a class="directory-link to-builder" href="">
+                    <a class="directory-link to-builder" href="characterBuilder/race.php">
                         <ion-icon name="person-add-outline"></ion-icon>
                     </a>
                     <p class="hide hide-builder">Builder</p>
                 </div>
                 <div class="directory-icon">
-                    <a class="directory-link to-roster" href="">
+                    <a class="directory-link to-roster" href="roster.view.php">
                         <ion-icon name="people-outline"></ion-icon>
                     </a>
                     <p class="hide hide-roster">Roster</p>
                 </div>
-                <div class="directory-icon">
-                    <a class="directory-link to-view" href="">
-                        <ion-icon name="person-outline"></ion-icon>
+                <div class="directory-icon right-directory-icon">
+                    <a class="directory-link to-edit" href="character-sheet.view.php">
+                        <ion-icon name="document-outline"></ion-icon>
                     </a>
-                    <p class="hide hide-view">View</p>
-                </div>
-                <div class="directory-icon right-directory-icon ">
-                    <a class="directory-link to-edit" href="">
-                        <ion-icon name="hammer-outline"></ion-icon>
-                    </a>
-                    <p class="hide hide-edit">Edit</p>
+                    <p class="hide hide-edit">Character<br>Sheetz</p>
                 </div>
             </div>
         </article>

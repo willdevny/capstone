@@ -1,32 +1,39 @@
 <?php
-	if (!isset($_SESSION)) session_start(); 
+if (!isset($_SESSION)) session_start();
 ?>
-	<!DOCTYPE html>
-	<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Document</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-	</head>
-	<body>
-		<div id="dynamicRender">
-			<input type="checkbox" name="dynamicCheckbox" id="dynamicCheckbox" checked>
-			<label for="dynamicCheckbox" title="If Dynamic Rendering is turned one, the character sheet will fill in certian inputs based on previous information you've inputted. Ex. Speed, Hit Points, Hit Dice">Dynamic Rendering</label>
-		</div>
-		<div id="edit">
-			<label for="editBtn">Mode:</label>
-			<button name="editBtn" id="editBtn" onclick="toggleEdit()">Edit</button>
-		</div>
-		<div id="download">
-			<button id="downloadBtn" onclick="downloadJSON({filename: 'characterData.json'})">Download</button>
-		</div>
-		<div id="import">
-			<label for="importFile">Import File</label>
-			<input type="file" name="importFile" id="importBtn" accept=".json">
-		</div>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+
+<body>
+
+	<a href="main.php"><ion-icon name="home"></ion-icon></a>
+	<div id="dynamicRender">
+		<input type="checkbox" name="dynamicCheckbox" id="dynamicCheckbox" checked>
+		<label for="dynamicCheckbox" title="If Dynamic Rendering is turned one, the character sheet will fill in certian inputs based on previous information you've inputted. Ex. Speed, Hit Points, Hit Dice">Dynamic Rendering</label>
+	</div>
+	<div id="edit">
+		<label for="editBtn">Mode:</label>
+		<button name="editBtn" id="editBtn" onclick="toggleEdit()">Edit</button>
+	</div>
+	<div id="save">
+		<button name="saveBtn" onclick="saveShet()">Save</button>
+	</div>
+	<div id="download">
+		<button id="downloadBtn" onclick="downloadJSON({filename: 'characterData.json'})">Download</button>
+	</div>
+	<div id="import">
+		<label for="importFile">Import File</label>
+		<input type="file" name="importFile" id="importBtn" accept=".json">
+	</div>
+	<section id="characterInfo">
 		<div id="raceClassName">
 			<label for="characterName">Character Name</label>
 			<input type="text" name="characterName" id="nameInput">
@@ -102,7 +109,7 @@
 					<td><label for="strThrow">Strength</label></td>
 				</tr>
 				<tr>
-					<td><input type="checkbox" name="sdexProf" class="profCheckbox" id="dexProf"></td>
+					<td><input type="checkbox" name="dexProf" class="profCheckbox" id="dexProf"></td>
 					<td><input type="number" name="dexThrow" id="dexThrow"></td>
 					<td><label for="dexThrow">Dexterity</label></td>
 				</tr>
@@ -371,8 +378,12 @@
 				<div id="cantrips">
 					<table>
 						<tr>
-							<td><p>0</p></td>
-							<td><p>Cantrips</p></td>
+							<td>
+								<p>0</p>
+							</td>
+							<td>
+								<p>Cantrips</p>
+							</td>
 						</tr>
 						<tr>
 							<td colspan="2"><input type="text" name="cantripOne" class="spellInput"></td>
@@ -404,12 +415,16 @@
 					<div class="spellHeader">
 						<table>
 							<tr>
-								<td><p>Spell Level</p></td>
+								<td>
+									<p>Spell Level</p>
+								</td>
 								<td><label for="levelOneTotal">Slots Total</label></td>
 								<td><label for="levelOneSpent">Slots Expended</label></td>
 							</tr>
 							<tr>
-								<td><p>1</p></td>
+								<td>
+									<p>1</p>
+								</td>
 								<td><input type="number" name="levelOneTotal" class="spellSlotTotal"></td>
 								<td><input type="number" name="levelOneSpent" class="spellSlotSpent"></td>
 							</tr>
@@ -417,8 +432,12 @@
 					</div>
 					<table>
 						<tr>
-							<td><p>Prepared</p></td>
-							<td><p>Spell Name</p></td>
+							<td>
+								<p>Prepared</p>
+							</td>
+							<td>
+								<p>Spell Name</p>
+							</td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
@@ -474,12 +493,16 @@
 					<div class="spellHeader">
 						<table>
 							<tr>
-								<td><p>Spell Level</p></td>
+								<td>
+									<p>Spell Level</p>
+								</td>
 								<td><label for="levelTwoTotal">Slots Total</label></td>
 								<td><label for="levelTwoSpent">Slots Expended</label></td>
 							</tr>
 							<tr>
-								<td><p>2</p></td>
+								<td>
+									<p>2</p>
+								</td>
 								<td><input type="number" name="levelTwoTotal" class="spellSlotTotal"></td>
 								<td><input type="number" name="levelTwoSpent" class="spellSlotSpent"></td>
 							</tr>
@@ -487,8 +510,12 @@
 					</div>
 					<table>
 						<tr>
-							<td><p>Prepared</p></td>
-							<td><p>Spell Name</p></td>
+							<td>
+								<p>Prepared</p>
+							</td>
+							<td>
+								<p>Spell Name</p>
+							</td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
@@ -548,12 +575,16 @@
 					<div class="spellHeader">
 						<table>
 							<tr>
-								<td><p>Spell Level</p></td>
+								<td>
+									<p>Spell Level</p>
+								</td>
 								<td><label for="levelThreeTotal">Slots Total</label></td>
 								<td><label for="levelThreeSpent">Slots Expended</label></td>
 							</tr>
 							<tr>
-								<td><p>3</p></td>
+								<td>
+									<p>3</p>
+								</td>
 								<td><input type="number" name="levelThreeTotal" class="spellSlotTotal"></td>
 								<td><input type="number" name="levelThreeSpent" class="spellSlotSpent"></td>
 							</tr>
@@ -561,8 +592,12 @@
 					</div>
 					<table>
 						<tr>
-							<td><p>Prepared</p></td>
-							<td><p>Spell Name</p></td>
+							<td>
+								<p>Prepared</p>
+							</td>
+							<td>
+								<p>Spell Name</p>
+							</td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
@@ -622,12 +657,16 @@
 					<div class="spellHeader">
 						<table>
 							<tr>
-								<td><p>Spell Level</p></td>
+								<td>
+									<p>Spell Level</p>
+								</td>
 								<td><label for="levelFourTotal">Slots Total</label></td>
 								<td><label for="levelFourSpent">Slots Expended</label></td>
 							</tr>
 							<tr>
-								<td><p>4</p></td>
+								<td>
+									<p>4</p>
+								</td>
 								<td><input type="number" name="levelFourTotal" class="spellSlotTotal"></td>
 								<td><input type="number" name="levelFourSpent" class="spellSlotSpent"></td>
 							</tr>
@@ -635,8 +674,12 @@
 					</div>
 					<table>
 						<tr>
-							<td><p>Prepared</p></td>
-							<td><p>Spell Name</p></td>
+							<td>
+								<p>Prepared</p>
+							</td>
+							<td>
+								<p>Spell Name</p>
+							</td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
@@ -696,12 +739,16 @@
 					<div class="spellHeader">
 						<table>
 							<tr>
-								<td><p>Spell Level</p></td>
+								<td>
+									<p>Spell Level</p>
+								</td>
 								<td><label for="levelFiveTotal">Slots Total</label></td>
 								<td><label for="levelFiveSpent">Slots Expended</label></td>
 							</tr>
 							<tr>
-								<td><p>5</p></td>
+								<td>
+									<p>5</p>
+								</td>
 								<td><input type="number" name="levelFiveTotal" class="spellSlotTotal"></td>
 								<td><input type="number" name="levelFiveSpent" class="spellSlotSpent"></td>
 							</tr>
@@ -709,8 +756,12 @@
 					</div>
 					<table>
 						<tr>
-							<td><p>Prepared</p></td>
-							<td><p>Spell Name</p></td>
+							<td>
+								<p>Prepared</p>
+							</td>
+							<td>
+								<p>Spell Name</p>
+							</td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
@@ -754,12 +805,16 @@
 					<div class="spellHeader">
 						<table>
 							<tr>
-								<td><p>Spell Level</p></td>
+								<td>
+									<p>Spell Level</p>
+								</td>
 								<td><label for="levelSixTotal">Slots Total</label></td>
 								<td><label for="levelSixSpent">Slots Expended</label></td>
 							</tr>
 							<tr>
-								<td><p>6</p></td>
+								<td>
+									<p>6</p>
+								</td>
 								<td><input type="number" name="levelSixTotal" class="spellSlotTotal"></td>
 								<td><input type="number" name="levelSixSpent" class="spellSlotSpent"></td>
 							</tr>
@@ -767,8 +822,12 @@
 					</div>
 					<table>
 						<tr>
-							<td><p>Prepared</p></td>
-							<td><p>Spell Name</p></td>
+							<td>
+								<p>Prepared</p>
+							</td>
+							<td>
+								<p>Spell Name</p>
+							</td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
@@ -812,12 +871,16 @@
 					<div class="spellHeader">
 						<table>
 							<tr>
-								<td><p>Spell Level</p></td>
+								<td>
+									<p>Spell Level</p>
+								</td>
 								<td><label for="levelSevenTotal">Slots Total</label></td>
 								<td><label for="levelSevenSpent">Slots Expended</label></td>
 							</tr>
 							<tr>
-								<td><p>7</p></td>
+								<td>
+									<p>7</p>
+								</td>
 								<td><input type="number" name="levelSevenTotal" class="spellSlotTotal"></td>
 								<td><input type="number" name="levelSevenSpent" class="spellSlotSpent"></td>
 							</tr>
@@ -825,8 +888,12 @@
 					</div>
 					<table>
 						<tr>
-							<td><p>Prepared</p></td>
-							<td><p>Spell Name</p></td>
+							<td>
+								<p>Prepared</p>
+							</td>
+							<td>
+								<p>Spell Name</p>
+							</td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
@@ -870,12 +937,16 @@
 					<div class="spellHeader">
 						<table>
 							<tr>
-								<td><p>Spell Level</p></td>
+								<td>
+									<p>Spell Level</p>
+								</td>
 								<td><label for="levelEightTotal">Slots Total</label></td>
 								<td><label for="levelEightSpent">Slots Expended</label></td>
 							</tr>
 							<tr>
-								<td><p>8</p></td>
+								<td>
+									<p>8</p>
+								</td>
 								<td><input type="number" name="levelEightTotal" class="spellSlotTotal"></td>
 								<td><input type="number" name="levelEightSpent" class="spellSlotSpent"></td>
 							</tr>
@@ -883,8 +954,12 @@
 					</div>
 					<table>
 						<tr>
-							<td><p>Prepared</p></td>
-							<td><p>Spell Name</p></td>
+							<td>
+								<p>Prepared</p>
+							</td>
+							<td>
+								<p>Spell Name</p>
+							</td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
@@ -920,12 +995,16 @@
 					<div class="spellHeader">
 						<table>
 							<tr>
-								<td><p>Spell Level</p></td>
+								<td>
+									<p>Spell Level</p>
+								</td>
 								<td><label for="levelNineTotal">Slots Total</label></td>
 								<td><label for="levelNineSpent">Slots Expended</label></td>
 							</tr>
 							<tr>
-								<td><p>9</p></td>
+								<td>
+									<p>9</p>
+								</td>
 								<td><input type="number" name="levelNineTotal" class="spellSlotTotal"></td>
 								<td><input type="number" name="levelNineSpent" class="spellSlotSpent"></td>
 							</tr>
@@ -933,8 +1012,12 @@
 					</div>
 					<table>
 						<tr>
-							<td><p>Prepared</p></td>
-							<td><p>Spell Name</p></td>
+							<td>
+								<p>Prepared</p>
+							</td>
+							<td>
+								<p>Spell Name</p>
+							</td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
@@ -968,8 +1051,12 @@
 				</div>
 			</div>
 		</div>
-	</body>
-	<?php
-		require 'character-sheet.php';
-	?>
-	</html>
+	</section>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+<?php
+require 'character-sheet.php';
+?>
+
+</html>
