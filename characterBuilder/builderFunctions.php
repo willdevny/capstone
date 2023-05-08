@@ -1,32 +1,7 @@
 <?php
+session_start();
 
-// $db_handle = pg_connect("host=localhost dbname=Dndbuilder user=williemdevenney password=password");
-
-// $query = "SELECT name, damagedice, damagetype, abilites
-// FROM weapon
-// WHERE quality='martial' AND distance='melee'";
-
-// $barbWeps1 = pg_fetch_all(pg_query($db_handle, $query));
-
-// $query = "SELECT name, damagedice, damagetype, abilites
-// FROM weapon
-// WHERE quality='simple' AND distance='melee'";
-
-// $barbWeps2 = pg_fetch_all(pg_query($db_handle, $query));
-
-// $query = "SELECT name, damagedice, damagetype, abilites
-// FROM weapon
-// WHERE name = 'Rapier' OR (quality='simple' AND distance='melee')";
-
-
-
-
-
-
-
-
-
-
+$_SESSION['race'] = 'Variant-Human';
 
 if(isset($_POST['Submit'])){
     if($_POST['hidden'] == "race"){
@@ -35,5 +10,37 @@ if(isset($_POST['Submit'])){
             header("Location: class.php");
         }
     }
+    else if($_POST['hidden'] == "job"){
+        if($_POST['job']!= ""){
+            $_SESSION['class'] = $_POST['job'];
+            $_SESSION['skills'] = $_POST['skills'];
+            if(isset($_POST['option1'])){
+                $_SESSION['option1'] = $_POST['option1'];
+            }
+            if(isset($_POST['option2'])){
+                $_SESSION['option2'] = $_POST['option2'];
+            }
+            if(isset($_POST['option3'])){
+                $_SESSION['option3'] = $_POST['option3'];
+            }
+            if(isset($_POST['option4'])){
+                $_SESSION['option4'] = $_POST['option4'];
+            }
+            if(isset($_POST['result'])){
+                $_SESSION['result'] = $_POST['result'];
+            }
+            header("Location: abilities.php");
+        }
+    }
+    else if($_POST['hidden'] == "stats"){
+        if(($_POST['Strength']!= "")&&($_POST['Dexterity']!= "")&&($_POST['Wisdom']!= "")&&($_POST['Charisma']!= "")&&($_POST['Intelligence']!= "")&&($_POST['Constitution']!= "")){
+            $_SESSION['Stats'] =[$_POST['Strength'], $_POST['Dexterity'], $_POST['Constitution'], $_POST['Intelligence'], $_POST['Wisdom'], $_POST['Charisma']];
+            header("Location: spells.php");
+        }
+    }
+
+}
+else{
+    return false;
 }
 ?>

@@ -35,8 +35,8 @@ require 'builderFunctions.php';
         <label for="roll">Roll for gold:</label>
         <input type="radio" id="roll" name="gold" onchange="getJob()">
     <form method="POST" action="class.php" name="jobstuff" id="jobstuff">
-    <input type="hidden" name="hidden" value="class" form="jobstuff">
-    <input type="submit" name="job" value="Submit"  form="jobstuff">
+    <input type="hidden" name="hidden" value="job" form="jobstuff">
+    <input type="Submit" name="Submit" value="Submit"  form="jobstuff">
     <div name="description" id="description"></div>
     
 </body>
