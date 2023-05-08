@@ -30,12 +30,13 @@ require 'builderFunctions.php';
             <label for='Constitution'>Constitution:</label>
             <input type='number' id='Constitution' name='Constitution' min='1' max='20' value = 10>
             <label for='Intelligence'>Intelligence:</label>
-            <input type='number' id='Intelligence' name='intelligence' min='1' max='20' value = 10>
+            <input type='number' id='Intelligence' name='Intelligence' min='1' max='20' value = 10>
             <label for='Wisdom'>Wisdom:</label>
             <input type='number' id='Wisdom' name='Wisdom' min='1' max='20' value = 10>
             <label for='Charisma'>Charisma:</label>
             <input type='Charisma' id='Charisma' name='Charisma' min='1' max='20' value = 10>
-            <input type='submit' name='submit' id='submit'>
+            <input type='hidden' name='hidden' value='stats'>
+            <input type='submit' name='Submit' id='Submit'>
         </form>
     </div>
 </body>

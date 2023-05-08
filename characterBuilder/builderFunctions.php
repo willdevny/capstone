@@ -35,7 +35,12 @@ if(isset($_POST['Submit'])){
     else if($_POST['hidden'] == "stats"){
         if(($_POST['Strength']!= "")&&($_POST['Dexterity']!= "")&&($_POST['Wisdom']!= "")&&($_POST['Charisma']!= "")&&($_POST['Intelligence']!= "")&&($_POST['Constitution']!= "")){
             $_SESSION['Stats'] =[$_POST['Strength'], $_POST['Dexterity'], $_POST['Constitution'], $_POST['Intelligence'], $_POST['Wisdom'], $_POST['Charisma']];
-            header("Location: spells.php");
+            if($_SESSION['class'] == 'Barbarian' || 'Fighter' || 'Monk' || 'Paladin' || 'Ranger' || 'Rogue'){
+                header("Location: character-sheet.php");
+            }
+            else{
+                header("Location: spells.php");
+            }
         }
     }
 

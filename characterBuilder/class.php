@@ -14,7 +14,7 @@ require 'builderFunctions.php';
 </head>
 <body>
         <label for="job">Choose a class:</label>    
-        <select name="job" id="job" onchange="getJob()">  
+        <select name="job" id="job" onchange="getJob()" form="jobstuff">  
             <option value="">------</option>
             <option value="Barbarian">Barbarian</option>
             <option value="Bard">Bard</option>
