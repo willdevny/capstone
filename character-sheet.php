@@ -1,6 +1,14 @@
 <?php
-	$db_connection = pg_connect("host=localhost dbname=postgres user=macowner password=password");
+if (!isset($_SESSION)) session_start();
 
+$db_connection = pg_connect("host=localhost dbname=postgres user=macowner password=password");
+
+if (isset($_POST['json_data'])) {
+	$character = $_POST['json_data'];
+	
+	$query = pg_query_params($db_connection, "INSERT INTO characters (userid, character) VALUES ($1, $2)", array($_SESSION['Id'], $character));
+	header("Location:roster.view.php");
+}
 ?>
 <script>
 	let playerRace = "";
@@ -8,6 +16,7 @@
 	let dynamicRendering = true;
 	let editToggle = true;
 	$('document').ready(function() {
+
 		if (dynamicRendering == true) {
 			$('#proficiencyInput').val(2);
 
@@ -45,7 +54,7 @@
 						$("#featAndTraitInput").val($("#featAndTraitInput").val() + "\nDarkvision \nDwarven Resilience \nStonecunning \nDwarven Toughness");
 						$("#weaponProf").val($("#weaponProf").val() + " Battleaxe, Handaxe, Light Hammer, Warhammer");
 						$("#langProf").val($("#langProf").val() + " Common, Dwarvish");
-	
+
 						if ($("#conAbility").val() != "") {
 							$("#conAbility").val(parseInt($("#conAbility").val()) + 2).trigger("change")
 						}
@@ -55,14 +64,14 @@
 						if ($("#maxHPInput").val() != "") {
 							$("#maxHPInput").val(parseInt($("#maxHPInput").val()) + 1)
 						}
-	
+
 					} else if (playerRace == "mountaindwarf") {
 						$("#speedInput").val("25");
 						$("#featAndTraitInput").val($("#featAndTraitInput").val() + "\nDarkvision \nStonecunning \nDwarven Resilience");
 						$("#weaponProf").val($("#weaponProf").val() + " Battleaxe, Handaxe, Light Hammer, Warhammer");
 						$("#armorProf").val($("#armorProf").val() + " Light Armor, Medium Armor");
 						$("#langProf").val($("#langProf").val() + " Common, Dwarvish");
-	
+
 						if ($("#conAbility").val() != "") {
 							$("#conAbility").val(parseInt($("#conAbility").val()) + 2).trigger("change")
 						}
@@ -75,7 +84,7 @@
 						$("#featAndTraitInput").val($("#featAndTraitInput").val() + "\nDarkvision \nFey Ancestry \nTrance");
 						$("#weaponProf").val($("#weaponProf").val() + " Longsword, Shortsword, Shortbow, Longbow");
 						$("#langProf").val($("#langProf").val() + " Common, Elvish");
-	
+
 						if ($("#dexAbility").val() != "") {
 							$("#dexAbility").val(parseInt($("#dexAbility").val()) + 2).trigger("change")
 						}
@@ -88,7 +97,7 @@
 						$("#featAndTraitInput").val($("#featAndTraitInput").val() + "\nDarkvision \nFey Ancestry \nTrance\n Mask of the Wild");
 						$("#weaponProf").val($("#weaponProf").val() + " Longsword, Shortsword, Shortbow, Longbow");
 						$("#langProf").val($("#langProf").val() + " Common, Elvish");
-	
+
 						if ($("#dexAbility").val() != "") {
 							$("#dexAbility").val(parseInt($("#dexAbility").val()) + 2).trigger("change")
 						}
@@ -101,7 +110,7 @@
 						$("#featAndTraitInput").val($("#featAndTraitInput").val() + "\nSuperior Darkvision \nFey Ancestry \nTrance \nSunlight Sensitivity \nDrow Magic");
 						$("#weaponProf").val($("#weaponProf").val() + " Rapiers, Shortswords, Hand Crossbows");
 						$("#langProf").val($("#langProf").val() + " Common, Elvish");
-	
+
 						if ($("#dexAbility").val() != "") {
 							$("#dexAbility").val(parseInt($("#dexAbility").val()) + 2).trigger("change")
 						}
@@ -112,7 +121,7 @@
 						$("#speedInput").val("25");
 						$("#langProf").val($("#langProf").val() + " Common, Halfling");
 						$("#featAndTraitInput").val($("#featAndTraitInput").val() + "\nLucky \nBrave \nHalfling Nimbleness \nNaturally Stealthy");
-	
+
 						if ($("#dexAbility").val() != "") {
 							$("#dexAbility").val(parseInt($("#dexAbility").val()) + 2).trigger("change")
 						}
@@ -123,7 +132,7 @@
 						$("#speedInput").val("25");
 						$("#langProf").val($("#langProf").val() + " Common, Halfling");
 						$("#featAndTraitInput").val($("#featAndTraitInput").val() + "\nLucky \nBrave \nHalfling Nimbleness \nStout Resilience");
-	
+
 						if ($("#dexAbility").val() != "") {
 							$("#dexAbility").val(parseInt($("#dexAbility").val()) + 2).trigger("change")
 						}
@@ -133,7 +142,7 @@
 					} else if (playerRace == "human") {
 						$("#speedInput").val("30");
 						$("#langProf").val($("#langProf").val() + " Common");
-	
+
 						if ($("#dexAbility").val() != "") {
 							$("#dexAbility").val(parseInt($("#dexAbility").val()) + 1).trigger("change")
 						}
@@ -156,7 +165,7 @@
 						$("#speedInput").val("30");
 						$("#featAndTraitInput").val($("#featAndTraitInput").val() + "\nDamage Resistance \nBreath Weapon");
 						$("#langProf").val($("#langProf").val() + " Common, Draconic");
-	
+
 						if ($("#strAbility").val() != "") {
 							$("#strAbility").val(parseInt($("#strAbility").val()) + 2).trigger("change")
 						}
@@ -167,7 +176,7 @@
 						$("#speedInput").val("25");
 						$("#langProf").val($("#langProf").val() + " Common, Gnomish");
 						$("#featAndTraitInput").val($("#featAndTraitInput").val() + "\nDarkvision \nGnome Cunning \nNatural Illusionist \nSpeak with Small Beasts");
-	
+
 						if ($("#intAbility").val() != "") {
 							$("#intAbility").val(parseInt($("#intAbility").val()) + 2).trigger("change")
 						}
@@ -178,7 +187,7 @@
 						$("#speedInput").val("25");
 						$("#langProf").val($("#langProf").val() + " Common, Gnomish");
 						$("#featAndTraitInput").val($("#featAndTraitInput").val() + "\nDarkvision \nGnome Cunning \nArtificer's Lore \nTinker");
-	
+
 						if ($("#intAbility").val() != "") {
 							$("#intAbility").val(parseInt($("#intAbility").val()) + 2).trigger("change")
 						}
@@ -189,7 +198,7 @@
 						$("#speedInput").val("30");
 						$("#langProf").val($("#langProf").val() + " Common, Elvish");
 						$("#featAndTraitInput").val($("#featAndTraitInput").val() + "\nDarkvision \nFey Ancestry");
-	
+
 						if ($("#chaAbility").val() != "") {
 							$("#chaAbility").val(parseInt($("#chaAbility").val()) + 2).trigger("change")
 						}
@@ -198,7 +207,7 @@
 						$(":input[name=intimidation]").prop('checked', true);
 						$("#langProf").val($("#langProf").val() + " Common, Orcish");
 						$("#featAndTraitInput").val($("#featAndTraitInput").val() + "\nDarkvision \nRelentless Endurance \nSavage Attacks");
-	
+
 						if ($("#strAbility").val() != "") {
 							$("#strAbility").val(parseInt($("#strAbility").val()) + 2).trigger("change")
 						}
@@ -209,7 +218,7 @@
 						$("#speedInput").val("30");
 						$("#langProf").val($("#langProf").val() + " Common, Infernal");
 						$("#featAndTraitInput").val($("#featAndTraitInput").val() + "\nDarkvision \nHellish Resistance");
-	
+
 						if ($("#chaAbility").val() != "") {
 							$("#chaAbility").val(parseInt($("#chaAbility").val()) + 2).trigger("change")
 						}
@@ -353,14 +362,18 @@
 						$("#strAbility").val(parseInt($("#strAbility").val()) + 1)
 					}
 					$("#strMod").val(Math.floor((parseInt($("#strAbility").val()) - 10) / 2))
-	
+
 					if ($("#strProf").is('checked')) {
 						$("$strThrow").val($("#strMod").val() + $("#proficiencyInput").val())
-					} else { $("#strThrow").val($("#strMod").val()) }
-	
+					} else {
+						$("#strThrow").val($("#strMod").val())
+					}
+
 					if ($(":input[name=athleticsProf]").is("checked")) {
 						$(":input[name=athletics]").val($("#strMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=athletics]").val($("#strMod").val()) }
+					} else {
+						$(":input[name=athletics]").val($("#strMod").val())
+					}
 				}
 			});
 			$("#dexAbility").change(function() {
@@ -371,21 +384,29 @@
 						$("#dexAbility").val(parseInt($("#dexAbility").val()) + 1)
 					}
 					$("#dexMod").val(Math.floor((parseInt($("#dexAbility").val()) - 10) / 2))
-	
+
 					if ($("#dexProf").is('checked')) {
 						$("#dexThrow").val($("#dexMod").val() + $("#proficiencyInput").val())
-					} else { $("#dexThrow").val($("#dexMod").val()) }
-	
+					} else {
+						$("#dexThrow").val($("#dexMod").val())
+					}
+
 					if ($(":input[name=acrobaticsProf]").is("checked")) {
 						$(":input[name=acrobatics]").val($("#dexMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=acrobatics]").val($("#dexMod").val()) }
+					} else {
+						$(":input[name=acrobatics]").val($("#dexMod").val())
+					}
 					if ($(":input[name=sleightProf]").is("checked")) {
 						$(":input[name=sleightHand]").val($("#dexMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=sleightHand]").val($("#dexMod").val()) }
+					} else {
+						$(":input[name=sleightHand]").val($("#dexMod").val())
+					}
 					if ($(":input[name=stealthProf]").is("checked")) {
 						$(":input[name=stealth]").val($("#dexMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=stealth]").val($("#dexMod").val()) }
-					
+					} else {
+						$(":input[name=stealth]").val($("#dexMod").val())
+					}
+
 				}
 			});
 			$("#conAbility").change(function() {
@@ -396,22 +417,21 @@
 						$("#conAbility").val(parseInt($("#conAbility").val()) + 1)
 					}
 					$("#conMod").val(Math.floor((parseInt($("#conAbility").val()) - 10) / 2))
-	
+
 					if ($("#conProf").is('checked')) {
 						$("#conThrow").val($("#conMod").val() + $("#proficiencyInput").val())
-					} else { $("#conThrow").val($("#conMod").val()) }
-	
-	
-					if(playerClass == "barbarian") {
+					} else {
+						$("#conThrow").val($("#conMod").val())
+					}
+
+
+					if (playerClass == "barbarian") {
 						$("#maxHPInput").val(12 + parseInt($("#conMod").val()))
-					}
-					else if (playerClass == "fighter" || playerClass == "paladin" || playerClass == "ranger") {
+					} else if (playerClass == "fighter" || playerClass == "paladin" || playerClass == "ranger") {
 						$("#maxHPInput").val(10 + parseInt($("#conMod").val()))
-					}
-					else if (playerClass == "bard" || playerClass == "cleric" || playerClass == "druid" || playerClass == "monk" || playerClass == "rogue" || playerClass == "warlock") {
+					} else if (playerClass == "bard" || playerClass == "cleric" || playerClass == "druid" || playerClass == "monk" || playerClass == "rogue" || playerClass == "warlock") {
 						$("#maxHPInput").val(8 + parseInt($("#conMod").val()))
-					}
-					else if (playerClass == "sorcerer" || playerClass == "wizard") {
+					} else if (playerClass == "sorcerer" || playerClass == "wizard") {
 						$("#maxHPInput").val(6 + parseInt($("#conMod").val()))
 					}
 				}
@@ -424,31 +444,43 @@
 						$("#intAbility").val(parseInt($("#intAbility").val()) + 1)
 					}
 					$("#intMod").val(Math.floor((parseInt($("#intAbility").val()) - 10) / 2))
-	
+
 					if ($("#intProf").is('checked')) {
 						$("#intThrow").val($("#intMod").val() + $("#proficiencyInput").val())
-					} else { $("#intThrow").val($("#intMod").val()) }
-	
-	
+					} else {
+						$("#intThrow").val($("#intMod").val())
+					}
+
+
 					if (playerClass == "wizard") {
 						$(":input[name=spellAbility]").val($("#intMod").val())
 					}
-	
+
 					if ($(":input[name=arcanaProf]").is("checked")) {
 						$(":input[name=arcana]").val($("#intMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=arcana]").val($("#intMod").val()) }
+					} else {
+						$(":input[name=arcana]").val($("#intMod").val())
+					}
 					if ($(":input[name=historyProf]").is("checked")) {
 						$(":input[name=history]").val($("#intMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=history]").val($("#intMod").val()) }
+					} else {
+						$(":input[name=history]").val($("#intMod").val())
+					}
 					if ($(":input[name=investigationProf]").is("checked")) {
 						$(":input[name=investigation]").val($("#intMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=investigation]").val($("#intMod").val()) }
+					} else {
+						$(":input[name=investigation]").val($("#intMod").val())
+					}
 					if ($(":input[name=natureProf]").is("checked")) {
 						$(":input[name=nature]").val($("#intMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=nature]").val($("#intMod").val()) }
+					} else {
+						$(":input[name=nature]").val($("#intMod").val())
+					}
 					if ($(":input[name=religionProf]").is("checked")) {
 						$(":input[name=religion]").val($("#intMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=religion]").val($("#intMod").val()) }
+					} else {
+						$(":input[name=religion]").val($("#intMod").val())
+					}
 				}
 			});
 			$("#wisAbility").change(function() {
@@ -458,31 +490,43 @@
 					}
 					$("#wisMod").val(Math.floor((parseInt($("#wisAbility").val()) - 10) / 2))
 					$("#passiveWisdomInput").val(10 + parseInt($("#wisMod").val()))
-	
+
 					if ($("#wisProf").is('checked')) {
 						$("#wisThrow").val($("#wisMod").val() + $("#proficiencyInput").val())
-					} else { $("#wisThrow").val($("#wisMod").val()) }
-	
-	
+					} else {
+						$("#wisThrow").val($("#wisMod").val())
+					}
+
+
 					if (playerClass == "cleric" || playerClass == "druid" || playerClass == "ranger") {
 						$(":input[name=spellAbility]").val($("#wisMod").val())
 					}
-	
+
 					if ($(":input[name=animalProf]").is("checked")) {
 						$(":input[name=animalHandling]").val($("#wisMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=animalHandling]").val($("#wisMod").val()) }
+					} else {
+						$(":input[name=animalHandling]").val($("#wisMod").val())
+					}
 					if ($(":input[name=insightProf]").is("checked")) {
 						$(":input[name=insight]").val($("#wisMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=insight]").val($("#wisMod").val()) }
+					} else {
+						$(":input[name=insight]").val($("#wisMod").val())
+					}
 					if ($(":input[name=medicineProf]").is("checked")) {
 						$(":input[name=medicine]").val($("#wisMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=medicine]").val($("#wisMod").val()) }
+					} else {
+						$(":input[name=medicine]").val($("#wisMod").val())
+					}
 					if ($(":input[name=perceptionProf]").is("checked")) {
 						$(":input[name=perception]").val($("#wisMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=perception]").val($("#wisMod").val()) }
+					} else {
+						$(":input[name=perception]").val($("#wisMod").val())
+					}
 					if ($(":input[name=survivalProf]").is("checked")) {
 						$(":input[name=survival]").val($("#wisMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=survival]").val($("#wisMod").val()) }
+					} else {
+						$(":input[name=survival]").val($("#wisMod").val())
+					}
 				}
 			});
 			$("#chaAbility").change(function() {
@@ -493,52 +537,69 @@
 						$("#chaAbility").val(parseInt($("#chaAbility").val()) + 1)
 					}
 					$("#chaMod").val(Math.floor((parseInt($("#chaAbility").val()) - 10) / 2))
-	
+
 					if ($("#chaProf").is('checked')) {
 						$("#chaThrow").val($("#chaMod").val() + $("#proficiencyInput").val())
-					} else { $("#chaThrow").val($("#chaMod").val()) }
-	
+					} else {
+						$("#chaThrow").val($("#chaMod").val())
+					}
+
 					if (playerClass == "bard" || playerClass == "paladin" || playerClass == "sorcerer" || playerClass == "warlock")
-					$(":input[name=spellAbility").val($("#chaMod").val())
-	
+						$(":input[name=spellAbility").val($("#chaMod").val())
+
 					if ($(":input[name=deceptionProf]").is("checked")) {
 						$(":input[name=deception]").val($("#chaMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=deception]").val($("#chaMod").val()) }
+					} else {
+						$(":input[name=deception]").val($("#chaMod").val())
+					}
 					if ($(":input[name=intimidationProf]").is("checked")) {
 						$(":input[name=intimidation]").val($("#chaMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=intimidation]").val($("#chaMod").val()) }
+					} else {
+						$(":input[name=intimidation]").val($("#chaMod").val())
+					}
 					if ($(":input[name=performanceProf]").is("checked")) {
 						$(":input[name=performance]").val($("#chaMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=performance]").val($("#chaMod").val()) }
+					} else {
+						$(":input[name=performance]").val($("#chaMod").val())
+					}
 					if ($(":input[name=persuasionProf]").is("checked")) {
 						$(":input[name=persuasion]").val($("#chaMod").val() + $("#proficiencyInput").val())
-					} else { $(":input[name=persuasion]").val($("#chaMod").val()) }
+					} else {
+						$(":input[name=persuasion]").val($("#chaMod").val())
+					}
 				}
 			});
 		}
 	});
 
+	function saveToggle() {
+		$("#saveText").prop('hidden', false);
+		$("#saveBtn").prop('disabled', true);
+	}
+
 	function saveSheet() {
 		let array = $("#characterInfo :input").serializeArray();
 		let dict = {};
-		$.each(array, function(i){
+		$.each(array, function(i) {
 			dict[array[i].name] = array[i].value
 		})
-		let csv = 'data:text/json;charset=utf-8,' + JSON.stringify(dict);
-		let filename = args.filename || 'export.csv';
-		let data = encodeURI(csv);
+		let csv = JSON.stringify(dict);
+		let character = encodeURI(csv);
 
+		$("#json_data").val(character);
 	}
 
 	function downloadJSON(args) {
+		//This function is used to convert all inputs into a json file and downloads it.
 		let array = $("#characterInfo :input").serializeArray();
 		let dict = {};
-		$.each(array, function(i){
+		$.each(array, function(i) {
 			dict[array[i].name] = array[i].value
 		})
 		let csv = 'data:text/json;charset=utf-8,' + JSON.stringify(dict);
 		let filename = args.filename || 'export.csv';
 		let data = encodeURI(csv);
+
 		let link = document.createElement('a');
 		link.setAttribute('href', data);
 		link.setAttribute('download', filename);
@@ -546,24 +607,44 @@
 	}
 
 	function fillInputs(jsonObj) {
-		$.each(jsonObj, function(i){
-			if(jsonObj[i] == "on") {
+		//This function takes a json object and fills in the character sheet inputs based off that json object.
+		$.each(jsonObj, function(i) {
+			if (jsonObj[i] == "on") {
 				$(":input[name=" + i + "]").prop('checked', true)
 			} else {
 				$(":input[name=" + i + "]").val(jsonObj[i])
 			}
 		})
 	}
-	function toggleEdit(){
-		if (editToggle == true){
+
+	function toggleEdit() {
+		//This function enables or disables buttons and inputs on the sheet based on which mode the user is in.
+		if (editToggle == true) {
 			editToggle = false;
 			$("#editBtn").html("View")
 			$(":input").prop("disabled", true);
-			$("#editBtn").prop("disabled",false);
-		} else if (editToggle == false){
+			$("#editBtn").prop("disabled", false);
+		} else if (editToggle == false) {
 			editToggle = true;
 			$("#editBtn").html("Edit")
 			$(":input").prop("disabled", false);
 		}
 	}
 </script>
+<?php
+if (!isset($_SESSION['Id'])) {
+	echo("<script>saveToggle()</script>");
+}
+
+if (isset($_GET['id'])) {
+	$query = pg_query_params($db_connection, "SELECT character FROM characters WHERE characterid = $1;", array($_GET['id']));
+	$result = pg_fetch_array($query);
+	$character = $result[0];
+
+	$character = str_replace("%22", '"', $character);
+	$character = str_replace("%7B", '{', $character);
+	$character = str_replace("%7D", '}', $character);
+
+	echo("<script>fillInputs($character);</script>");	
+}
+?>

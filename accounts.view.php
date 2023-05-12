@@ -23,8 +23,12 @@
 		<label for="email">Email:</label>
 		<input type="text" name="email" id="emailInput" disabled>
 		<input type="submit" id="submitButton" name="editForm" hidden>
+		<input type="submit" id="logoutBtn" name="logoutBtn" hidden>
 	</form>
 	<button onclick=editAccount() id="editButton">Edit<ion-icon name="cog"></ion-icon></button>
+	<form action="accounts.view.php" method="post">
+		<input type="submit" name="logoutBtn" value="Log Out"></input>
+	</form>
 
 	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

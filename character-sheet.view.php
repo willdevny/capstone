@@ -8,7 +8,7 @@ if (!isset($_SESSION)) session_start();
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Character Sheet</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
@@ -24,7 +24,11 @@ if (!isset($_SESSION)) session_start();
 		<button name="editBtn" id="editBtn" onclick="toggleEdit()">Edit</button>
 	</div>
 	<div id="save">
-		<button name="saveBtn" onclick="saveShet()">Save</button>
+		<form method="post" action="" onsubmit="saveSheet()">
+			<p id="saveText" hidden>In order to save your character, you must login first.</p>
+			<input type="hidden" name="json_data" id="json_data">
+			<button type="submit" id="saveBtn">Save</button>
+		</form>
 	</div>
 	<div id="download">
 		<button id="downloadBtn" onclick="downloadJSON({filename: 'characterData.json'})">Download</button>
