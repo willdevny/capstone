@@ -25,7 +25,12 @@
 
 		$query = pg_query_params($db_connection, "UPDATE users SET username = $1, email = $2 WHERE id = $3", array($uname, $email, $_SESSION['Id']));
 		header("Location:accounts.view.php");
-	}
+	};
+
+	if (isset($_POST['logoutBtn'])) {
+		unset($_SESSION['Id']);
+		header("Location:main.php");
+	};
 ?>
 <script>
 	function editAccount() {
