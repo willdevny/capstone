@@ -1,5 +1,4 @@
 <?php
-session_start();
 require 'builderFunctions.php';
 ?>
 <!DOCTYPE html>
@@ -12,7 +11,7 @@ require 'builderFunctions.php';
     <title>Race</title>
 </head>
 <body>
-    <form method="POST" action="race.php">
+    <form method="POST">
         <label for="race">Choose a race:</label>    
         <select name="race" id="race" onchange="getRace()">
             <option value="">------</option>
@@ -344,17 +343,8 @@ require 'builderFunctions.php';
                         <li><b>Speed.</b>Your base walking speed is 30 feet.</li>\
                         <li><b>Darkvision.</b>Thanks to your elven heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.</li>\
                         <li><b>Fey Ancestry.</b>You have advantage on saving throws against being charmed, and magic can't put you to sleep.</li>\
-                        <li><b>Half-Elf Versatility.</b>Choose one of the following traits:\
-                        <ul>\
-                        <li><b>Skill Versatility (General).</b> You gain proficiency in two skills of your choice.</li>\
-                        <li><b>Elf Weapon Training (High or Wood Elf Heritage).</b> You have proficiency with the longsword, shortsword, shortbow, and longbow.</li>\
-                        <li><b>Cantrip (High Elf Heritage).</b> You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it.</li>\
-                        <li><b>Fleet of Foot (Wood Elf Heritage).</b> Your base walking speed increases to 35 feet.</li>\
-                        <li><b>Mask of the Wild (Wood Elf Heritage).</b> You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.</li>\
-                        <li><b>Drow Magic (Dark Elf Heritage).</b> You know the Dancing Lights cantrip. When you reach 3rd level, you can cast Faerie Fire once, and it recharges after a long rest. When you reach 5th level, you can cast Darkness once, and it recharges after a long rest. Charisma is your spellcasting ability for these spells.</li>\
-                        <li><b>Swim Speed (Sea Elf Heritage).</b> You have a swimming speed of 30 feet.</li>\
-                        <li><b>Languages.</b>You can read, speak, and write Common, Elven, and one language of your choice.</li>\
-                        </ul></li>"
+                        <li><b>Skill Versatility.</b> You gain proficiency in two skills of your choice.</li>\
+                        "
             var $ul = $("<ul>" + lis + "</ul>");
             var $final = $p.append($ul);
 
