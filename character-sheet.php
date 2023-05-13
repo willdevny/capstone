@@ -6,7 +6,7 @@
 	let playerClass = "";
 	let dynamicRendering = true;
 	let editToggle = true;
-	$('document').ready(function()) {
+	$('document').ready(function() {
 		$("#importBtn").on('change', function() {
 			var reader = new FileReader();
 			reader.onload = function(event) {
