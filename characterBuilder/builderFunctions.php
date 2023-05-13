@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-$_SESSION['race'] = 'Variant-Human';
-
 if(isset($_POST['Submit'])){
     if($_POST['hidden'] == "race"){
         if($_POST['race']!= ""){
@@ -35,15 +33,55 @@ if(isset($_POST['Submit'])){
     else if($_POST['hidden'] == "stats"){
         if(($_POST['Strength']!= "")&&($_POST['Dexterity']!= "")&&($_POST['Wisdom']!= "")&&($_POST['Charisma']!= "")&&($_POST['Intelligence']!= "")&&($_POST['Constitution']!= "")){
             $_SESSION['Stats'] =[$_POST['Strength'], $_POST['Dexterity'], $_POST['Constitution'], $_POST['Intelligence'], $_POST['Wisdom'], $_POST['Charisma']];
-            if($_SESSION['class'] == 'Barbarian' || 'Fighter' || 'Monk' || 'Paladin' || 'Ranger' || 'Rogue'){
-                header("Location: character-sheet.php");
+            if($_SESSION['class'] == 'Bard' || 'Cleric' || 'Druid' || 'Sorcerer' || 'Warlock' || 'Wizard'){
+                header("Location: spells.php");
             }
             else{
-                header("Location: spells.php");
+                header("Location: character-sheet.php");
             }
         }
     }
+    else if($_POST['hidden'] == "Spells"){
+        $cantrips = 0;
+        $Spells = 0;
 
+        if($_SESSION['class'] == 'Bard'){
+            $cantrips = '2';
+            $Spells = '4';
+        }
+        else if($_SESSION['class'] == 'Cleric'){
+            $cantrips = '3';
+        }
+        else if($_SESSION['class'] == 'Druid'){
+            $cantrips = '2';
+        }
+        else if($_SESSION['class'] == 'Sorcerer'){
+            $cantrips = '4';
+            $Spells = '2';
+        }
+        else if($_SESSION['class'] == 'Warlock'){
+            $cantrips = '2';
+            $Spells = '2';
+        }
+        else if($_SESSION['class'] == 'Wizard'){
+            $cantrips = '3';
+            $Spells = '6';
+        }
+        if(isset($_POST['cantripList'])){
+            if(count($_POST['cantripList']) == $cantrips){
+                $_SESSION['cantrips'] == $_POST['cantripList'];
+                if(isset($_POST['spellList'])){
+                    if(count($_POST['spellList']) == $Spells){
+                        $_SESSION['spells'] == $_POST['spellList'];
+                        header("Location: subclass.php");
+                    }
+                }
+                else{
+                    header("Location: subclass.php");
+                }
+            }    
+        }    
+    }
 }
 else{
     return false;
