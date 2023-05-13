@@ -5,7 +5,9 @@
     padding: 0;
 }
 
-main, body, html {
+main,
+body,
+html {
     width: 100%;
     height: 100%;
 }
@@ -13,11 +15,6 @@ main, body, html {
 main {
     display: flex;
     flex-direction: column;
-}
-
-article {
-    width: 100%;
-    height: 100%;
 }
 
 header {
@@ -34,21 +31,36 @@ footer {
     display: none;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 /* Nav */
 
 .nav {
     height: 100%;
-    background-image: url("ivory-off-white-paper-texture.jpg");
     background-size: cover;
     border-bottom: 1rem solid #325d68;
     box-shadow: 0 -2px 4px 0px rgba(0, 0, 0, 0.75);
-}
-
-.home-nav {
     display: flex;
     justify-content: end;
     align-items: center;
     padding: 0px 2rem 0px 2rem;
+}
+
+.home-nav {
+    background-image: url("ivory-off-white-paper-texture.jpg");
+}
+
+.else-nav {
+    background-position: 0% 30%;
+    background-image: url("snow-capped-mountains-castle-3d-rendering.png");
 }
 
 /* Footer */
@@ -62,10 +74,14 @@ footer {
 
 /* Flex */
 
-.horizontal-container  {
-    height: 100%;
+.horizontal-container {
     display: flex;
     flex-direction: row;
+}
+
+.vertical-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .flex-center {
@@ -73,10 +89,27 @@ footer {
     align-items: center;
 }
 
+.flex-between {
+    justify-content: space-between;
+}
+
+.flex-around {
+    justify-content: space-around;
+}
+
+.flex-start {
+    justify-content: start;
+}
+
 /* Icons */
 
 .profile-button {
     color: #5d000b;
+    font-size: 4em;
+}
+
+.else-profile-button {
+    color: white;
     font-size: 4em;
 }
 
@@ -124,7 +157,8 @@ footer {
     padding-right: 0px;
 }
 
-.directory-link, .hide {
+.directory-link,
+.hide {
     transition: 0.5s;
 }
 
@@ -144,18 +178,147 @@ footer {
     font-size: 13rem;
 }
 
-.to-edit:hover + .hide-edit {
+.to-edit:hover+.hide-edit {
     display: block;
 }
 
-.to-view:hover + .hide-view {
+.to-view:hover+.hide-view {
     display: block;
 }
 
-.to-roster:hover + .hide-roster {
+.to-roster:hover+.hide-roster {
     display: block;
 }
 
-.to-builder:hover + .hide-builder {
+.to-builder:hover+.hide-builder {
     display: block;
+}
+
+/* Sheet exclusive */
+
+#sheet {
+    background-image: url("ivory-off-white-paper-texture.jpg");
+    background-repeat: repeat;
+    box-sizing: border-box;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+#sheet input[type="number"] {
+    text-align: center;
+}
+
+#sheet textarea {
+    resize: none;
+}
+
+#sheet input[type="text"] {
+    box-sizing: border-box;
+    padding-left: 0.3em;
+}
+
+.rectangle {
+    height: 3rem;
+    width: 7rem;
+}
+
+.square {
+    height: 3rem;
+    width: 3rem;
+}
+
+.feat-box {
+    height: 25rem;
+    width: 15rem;
+}
+
+.attack-box {
+    height: 16rem;
+}
+
+.equipment-box {
+    height: 20rem;
+    width: 15rem;
+}
+
+.skillInputs {
+    height: 1.1rem;
+    width: 1.1rem;
+}
+
+.moneyInputs {
+    height: 1.1rem;
+    width: 2rem;
+}
+
+.box {
+    height: 7rem;
+    width: 3rem;
+}
+
+.spell-section {
+    height: 67rem;
+    display: grid;
+    grid-template-rows: 20rem 20rem 20rem;
+    grid-template-columns: 30% 30% 30%;
+    gap: 4rem;
+}
+
+.fourth1 {
+    width: 20%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+}
+
+.fourth2 {
+    width: 17%;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.fourth3 {
+    width: 19%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.fourth4 {
+    width: 21%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.section-head {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-bottom: 0.2em;
+}
+
+.section-subhead {
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.spacing {
+    margin-top: 1em;
+}
+
+.section-spacing {
+    margin-top: 2em;
+}
+
+.half-spacing {
+    margin-top: 0.5em;
+}
+
+.crc-spacing {
+    margin-right: 2em;
+}
+
+.saving-throw-table {
+    width: 70%;
 }
