@@ -18,8 +18,8 @@
                 <a href="accounts.view.php"><ion-icon class="profile-button" name="person-circle-outline"></ion-icon></a>
             </div>
         </header>
-        <article id="landing-page">
-            <div class="horizontal-container flex-center">
+        <article id="landing-page" class="horizontal-container flex-center justify-center">
+            <div class="horizontal-container flex-center justify-center">
                 <div class="left-directory-icon directory-icon">
                     <a class="directory-link to-builder" href="characterBuilder/race.php">
                         <ion-icon name="person-add-outline"></ion-icon>
