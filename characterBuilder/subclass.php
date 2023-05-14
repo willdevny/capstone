@@ -13,8 +13,9 @@ require 'builderFunctions.php';
     <title>Document</title>
 </head>
 <body>
+    <form method='POST' name='sub' id='sub'>
     <label for="sub">Choose a subclass:</label>
-        <select name="sub" id="sub" onchange="getSub()" form="sub">
+        <select name="subclass" id="subclass" onchange="getSub()">
             <option value="">------</option>
               <?php 
                 if($_SESSION['class'] == 'Cleric'){
@@ -37,6 +38,9 @@ require 'builderFunctions.php';
                 }
               ?>
         </select>
+        <input type="hidden" name="hidden" value="subclass">
+        <input type="Submit" name="Submit" value="Submit">
+    </form>
         <br>
         <br>
         <div name="description" id="description"></div>
