@@ -13,7 +13,7 @@ if(isset($_POST['Submit'])){
             $_SESSION['class'] = $_POST['job'];
             $_SESSION['skills'] = $_POST['skills'];
             $_SESSION['equipment'] = [];
-            $_SESSION['gold'] = [];
+            $_SESSION['gold'] = '';
             if(isset($_POST['option1'])){
                 array_push($_SESSION['equipment'], $_POST['option1']);
             }
@@ -196,47 +196,53 @@ function getInfo(){
     }
     
     if($_SESSION['class'] == 'Barbarian'){
-        $_SESSION['HP'] = 12 + floor(($_POST['Constitution'] - 10)/2);
+        $_SESSION['HP'] = 12 + floor(($_SESSION['Stats'][2] - 10)/2);
         $_SESSION['profs'] = ['Light Armour', 'Medium Armour', 'Shields', 'Simple Weapons', 'Martial Weapons'];
         $_SESSION['classFeats'] = ['Rage', 'Unarmored Defense'];
         $_SESSION['throws'] = ['Str', 'Con'];
+        $_SESSION['hitdice'] = '1d12';
         array_push($_SESSION['equipment'], 'Explorer Pack');
         array_push($_SESSION['equipment'], '4 Javelins');
     }
     else if($_SESSION['class'] == 'Bard'){
-        $_SESSION['HP'] = 8 + floor(($_POST['Constitution'] - 10)/2);
+        $_SESSION['HP'] = 8 + floor(($_SESSION['Stats'][2] - 10)/2);
         $_SESSION['profs'] = ['Light Armour', 'Simple Weapons', 'Hand Crossbows', 'Longswords', 'Rapiers', 'Shortswords', 'Three musical instruments of your choice'];
         $_SESSION['classFeats'] = ['Spellcasting', 'Bardic Inspiration'];
         $_SESSION['throws'] = ['Dex', 'Cha'];
+        $_SESSION['hitdice'] = '1d8';
         array_push($_SESSION['equipment'], 'A musical instrument');
         array_push($_SESSION['equipment'], 'Leather Armour');
         array_push($_SESSION['equipment'], 'Dagger');
     }
     else if($_SESSION['class'] == 'Cleric'){
-        $_SESSION['HP'] = 8 + floor(($_POST['Constitution'] - 10)/2);
+        $_SESSION['HP'] = 8 + floor(($_SESSION['Stats'][2] - 10)/2);
         $_SESSION['profs'] = ['Light Armour', 'Medium Armour', 'Shields', 'Simple Weapons'];
         $_SESSION['classFeats'] = ['Spellcasting', 'Divine Domain'];
         $_SESSION['throws'] = ['Wis', 'Cha'];
+        $_SESSION['hitdice'] = '1d8';
         array_push($_SESSION['equipment'], 'Shield');
         array_push($_SESSION['equipment'], 'Holy Symbol');
     }
     else if($_SESSION['class'] == 'Druid'){
-        $_SESSION['HP'] = 8 + floor(($_POST['Constitution'] - 10)/2);
+        $_SESSION['HP'] = 8 + floor(($_SESSION['Stats'][2] - 10)/2);
         $_SESSION['profs'] = ['Light Armour', 'Medium Armour', 'Shields', 'Clubs', 'Daggers', 'Darts', 'Javelins', 'Maces', 'Quarterstaffs', 'Scimitars', 'Sickles', 'Slings', 'Spears', 'Herbalism Kit'];
         $_SESSION['classFeats'] = ['Spellcasting', 'Divine Domain'];
         $_SESSION['throws'] = ['Wis', 'Int'];
+        $_SESSION['hitdice'] = '1d8';
         array_push($_SESSION['equipment'], 'Leather Armour');
         array_push($_SESSION['equipment'], 'Explorer Pack');
         array_push($_SESSION['equipment'], 'Druidic Focus');
     }
     else if($_SESSION['class'] == 'Fighter'){
-        $_SESSION['HP'] = 10 + floor(($_POST['Constitution'] - 10)/2);
+        $_SESSION['HP'] = 10 + floor(($_SESSION['Stats'][2] - 10)/2);
+        $_SESSION['hitdice'] = '1d10';
         $_SESSION['profs'] = ['All Armour', 'Shields', 'Simple Weapons', 'Martial Weapons'];
         $_SESSION['classFeats'] = ['Fighting Style'.$_SESSION['fightingstyle'] , 'Second Wind'];
         $_SESSION['throws'] = ['Str', 'Con'];
     }
     else if($_SESSION['class'] == 'Monk'){
-        $_SESSION['HP'] = 8 + floor(($_POST['Constitution'] - 10)/2);
+        $_SESSION['HP'] = 8 + floor(($_SESSION['Stats'][2] - 10)/2);
+        $_SESSION['hitdice'] = '1d8';
         $_SESSION['profs'] = ['Simple Weapons', 'Shortswords', "one type of artisan's tools or one musical instrument"];
         $_SESSION['classFeats'] = ['Martial Arts'];
         $_SESSION['throws'] = ['Str', 'Dex'];
@@ -247,48 +253,73 @@ function getInfo(){
         $_SESSION['profs'] = ['All Armour', 'Shields', "Simple Weapons", 'Martial Weapons'];
         $_SESSION['classFeats'] = ['Divine Sense', 'Lay on Hands'];
         $_SESSION['throws'] = ['Wis', 'Cha'];
+        $_SESSION['hitdice'] = '1d10';
         array_push($_SESSION['equipment'], 'Chainmail');
         array_push($_SESSION['equipment'], 'Holy Symbol');
     }
     else if($_SESSION['class'] == 'Ranger'){
-        $_SESSION['HP'] = 10 + floor(($_POST['Constitution'] - 10)/2);
+        $_SESSION['HP'] = 10 + floor(($_SESSION['Stats'][2] - 10)/2);
         $_SESSION['profs'] = ['Light Armour', 'Medium Armour', 'Shields', "Simple Weapons", 'Martial Weapons'];
         $_SESSION['classFeats'] = ['Favored Enemy', 'Natural Explorer'];
         $_SESSION['throws'] = ['Str', 'Dex'];
+        $_SESSION['hitdice'] = '1d10';
         array_push($_SESSION['equipment'], 'Longbow');
         array_push($_SESSION['equipment'], 'Quiver of 20 arrows');
     }
     else if($_SESSION['class'] == 'Rogue'){
-        $_SESSION['HP'] = 8 + floor(($_POST['Constitution'] - 10)/2);
+        $_SESSION['HP'] = 8 + floor(($_SESSION['Stats'][2] - 10)/2);
         $_SESSION['profs'] = ['Light Armour', 'Simple Weapons', 'Hand Crossbows', 'Longswords', "Rapiers", 'Shortswords', "Thieves' Tools"];
         $_SESSION['classFeats'] = ['Expertise', 'Sneak Attack', "Thieves' Cant"];
         $_SESSION['throws'] = ['Int', 'Dex'];
+        $_SESSION['hitdice'] = '1d8';
         array_push($_SESSION['equipment'], 'Leather Armour');
         array_push($_SESSION['equipment'], 'Two Daggers');
         array_push($_SESSION['equipment'], "Thieves' Tools");
     }
     else if($_SESSION['class'] == 'Sorcerer'){
-        $_SESSION['HP'] = 6 + floor(($_POST['Constitution'] - 10)/2);
+        $_SESSION['HP'] = 6 + floor(($_SESSION['Stats'][2] - 10)/2);
         $_SESSION['profs'] = ['Daggers', 'Light Crossbows', 'Darts', "Slings", 'Quarterstaffs'];
         $_SESSION['classFeats'] = ['Spellcasting', 'Sorcerous Origin'];
         $_SESSION['throws'] = ['Con', 'Cha'];
+        $_SESSION['hitdice'] = '1d6';
         array_push($_SESSION['equipment'], 'Two Daggers');
     }
     else if($_SESSION['class'] == 'Warlock'){
-        $_SESSION['HP'] = 8 + floor(($_POST['Constitution'] - 10)/2);
+        $_SESSION['HP'] = 8 + floor(($_SESSION['Stats'][2] - 10)/2);
         $_SESSION['profs'] = ['Light Armour', 'Simple Weapons'];
         $_SESSION['classFeats'] = ['Spellcasting', 'Otherworldly Patron'];
         $_SESSION['throws'] = ['Wis', 'Cha'];
+        $_SESSION['hitdice'] = '1d8';
         array_push($_SESSION['equipment'], 'Leather Armour');
         array_push($_SESSION['equipment'], 'Two Daggers');
     }
     else if($_SESSION['class'] == 'Wizard'){
-        $_SESSION['HP'] = 6 + floor(($_POST['Constitution'] - 10)/2);
+        $_SESSION['HP'] = 6 + floor(($_SESSION['Stats'][2] - 10)/2);
         $_SESSION['profs'] = ['Daggers', 'Darts', 'Slings', 'Quarterstaffs', 'Light Crossbows'];
         $_SESSION['classFeats'] = ['Spellcasting', 'Arcane Recovery'];
         $_SESSION['throws'] = ['Wis', 'Int'];
+        $_SESSION['hitdice'] = '1d6';
         array_push($_SESSION['equipment'], 'Spell Book');
     }
 }
 
+
+//session variable names -
+//$_SESSION['class'] == class name
+//$_SESSION['race'] == race name
+//$_SESSION['skills'] == skill proficencies (array of strings)
+//$_SESSION['equipment'] == starting equipment (could be empty, array string)
+//$_SESSION['gold'] == starting gold (could be empty)
+//$_SESSION['cantrips'] == cantrip names (array of strings)
+//$_SESSION['spells'] == spell names (array of strings)
+//$_SESSION['raceFeats'] == race feat names (array of strings)
+//$_SESSION['speed'] == speed (string)
+//$_SESSION['size'] == small/medium
+//$_SESSION['languages'] == known languages (array of strings)
+//$_SESSION['HP'] == max hp 
+//$_SESSION['profs'] == weapon and tool proficencies (array of strings)
+//$_SESSION['classFeats'] == class feat name (array of strings)
+//$_SESSION['throws'] == saving throw proficencies (array of strings)
+//$_SESSION['hitdice'] ==  1dsomething
+//$_SESSION['subclass'] == subclass name
 ?>
