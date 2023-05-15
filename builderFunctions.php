@@ -48,39 +48,39 @@ if(isset($_POST['Submit'])){
         }
     }
     else if($_POST['hidden'] == "Spells"){
-        $cantrips = 0;
+        $Cantrips = 0;
         $Spells = 0;
 
         if($_SESSION['class'] == 'Bard'){
-            $cantrips = '2';
-            $Spells = '4';
+            $Cantrips = 2;
+            $Spells = 4;
         }
         else if($_SESSION['class'] == 'Cleric'){
-            $cantrips = '3';
-            $cantrips = '2';
+            $Cantrips = 3;
+            $Spells = 2;
         }
         else if($_SESSION['class'] == 'Druid'){
-            $cantrips = '2';
-            $Spells = '2';
+            $Cantrips = 2;
+            $Spells = 2;
         }
         else if($_SESSION['class'] == 'Sorcerer'){
-            $cantrips = '4';
-            $Spells = '2';
+            $Cantrips = 4;
+            $Spells = 2;
         }
         else if($_SESSION['class'] == 'Warlock'){
-            $cantrips = '2';
-            $Spells = '2';
+            $Cantrips = 2;
+            $Spells = 2;
         }
         else if($_SESSION['class'] == 'Wizard'){
-            $cantrips = '3';
-            $Spells = '6';
+            $Cantrips = 3;
+            $Spells = 6;
         }
         if(isset($_POST['cantripList'])){
-            if(count($_POST['cantripList']) == $cantrips){
-                $_SESSION['cantrips'] == $_POST['cantripList'];
+            if(count($_POST['cantripList']) == $Cantrips){
+                $_SESSION['cantrips'] = $_POST['cantripList'];
                 if(isset($_POST['spellList'])){
                     if(count($_POST['spellList']) == $Spells){
-                        $_SESSION['spells'] == $_POST['spellList'];
+                        $_SESSION['spells'] = $_POST['spellList'];
                         if($_SESSION['class'] == 'Cleric' || $_SESSION['class'] == 'Sorcerer' || $_SESSION['class'] == 'Warlock'){
                             header("Location: subclass.php");
                         }
