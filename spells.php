@@ -26,9 +26,11 @@ require 'spellbooks.php';
         }
         else if($_SESSION['class'] == 'Cleric'){
             $cantrips = '3';
+            $Spells = '2';
         }
         else if($_SESSION['class'] == 'Druid'){
             $cantrips = '2';
+            $Spells = '2';
         }
         else if($_SESSION['class'] == 'Sorcerer'){
             $cantrips = '4';
@@ -69,10 +71,10 @@ require 'spellbooks.php';
                         $Spells = $bardSpells;
                     }
                     else if($_SESSION['class'] == 'Cleric'){
-                        $spells = $clericSpells;
+                        $Spells = $clericSpells;
                     }
                     else if($_SESSION['class'] == 'Druid'){
-                        $spells = $druidSpells;
+                        $Spells = $druidSpells;
                     }
                     else if($_SESSION['class'] == 'Sorcerer'){
                         $Spells = $sorcererSpells;
@@ -83,7 +85,7 @@ require 'spellbooks.php';
                     else if($_SESSION['class'] == 'Wizard'){
                         $Spells = $wizardSpells;
                     }
-                    for($x = 0; $x <count($Spells); $x++){
+                    for($x = 0; $x < count($Spells); $x++){
                         $canOrLev = $Spells[$x][0];
 
                         $level = "<td>".$Spells[$x][0]."<td>";
@@ -96,10 +98,10 @@ require 'spellbooks.php';
 
 
                         if($canOrLev == 'Cantrip'){
-                            $button = "<td><input type='checkbox' name='cantripList[]' value='".$name."' form='Spells'></td>";
+                            $button = "<td><input type='checkbox' name='cantripList[]' value='".$Spells[$x][1]."' form='Spells'></td>";
                         }
                         else{
-                            $button = "<td><input type='checkbox' name='spellList[]' value='".$name."' form='Spells'></td>";
+                            $button = "<td><input type='checkbox' name='spellList[]' value='".$Spells[$x][1]."' form='Spells'></td>";
                         }
                         echo "<tr>".$level.$name.$school.$casttime.$range.$duration.$components.$button."</tr>";
                     };

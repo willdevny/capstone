@@ -48,7 +48,7 @@ require 'builderFunctions.php';
 <script type="text/javascript">
     function getSub(){
         $("#description").html("");
-        var sub=$('#sub').val();
+        var sub=$('#subclass').val();
         console.log(sub)
         if(sub=="Knowledge"){
             var table = "<table>\

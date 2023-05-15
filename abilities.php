@@ -27,9 +27,9 @@ require 'builderFunctions.php';
     <p>Input manually or roll (4d6 drop lowest) for stats?</p>
     <p>Racial Modifiers are only automatically added if you choose to roll</p>
     <label for="noroll">Input stats:</label>
-    <input type="radio" id="noroll" name="gold" onchange="getStats('no')" checked>
+    <input type="radio" id="noroll" name="roll" onchange="getStats('no')" checked>
     <label for="roll">Roll for stats:</label>
-    <input type="radio" id="roll" name="gold" onchange="getStats('yes')">
+    <input type="radio" id="roll" name="roll" onchange="getStats('yes')">
 
     <div name="statblock" id="statblock">
         <form method = 'POST'>
@@ -311,7 +311,7 @@ require 'builderFunctions.php';
                 "
         var $array = "\
                 <div name='diceArray' id='diceArray' style='display:inline;'>" + rolledArray[0] + ", " + rolledArray[1] + ", " + rolledArray[2] + ", "  + rolledArray[3] + ", "  + rolledArray[4] + ", "  + rolledArray[5] + "</div>\
-                <button type='button' onclick='rollArray()'></button>\
+                <button type='button' onclick='rollArray()'>ROLL ARRAY</button>\
                 <div>\
                 <select name='roll0' id='roll0' onchange='getRoll(`roll0`)'>\
                 <option value=''>------</option>\
