@@ -321,4 +321,5 @@ function getInfo(){
 //$_SESSION['throws'] == saving throw proficencies (array of strings)
 //$_SESSION['hitdice'] ==  1dsomething
 //$_SESSION['subclass'] == subclass name
+//$_SESSION['stat'] == [str, dex, con, int, wis, cha]
 ?>
