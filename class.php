@@ -659,7 +659,7 @@ require 'builderFunctions.php';
                         <ul>\
                         <li><b>Armour:</b>Light armor</li>\
                         <li><b>Weapons:</b>Simple weapons, hand crossbows, longswords, rapiers, shortswords</li>\
-                        <li><b>Tools:</b> Three musical instruments of your choice</li>\
+                        <li><b>Tools:</b>Three musical instruments of your choice</li>\
                         <li><b>Saving Throws:</b>Dexterity and Charisma</li>\
                         <li><b>Skills:</b>Choose three from this list:\
                         <select name='skills' id='skills' multiple form='jobStuff'>\
@@ -1117,7 +1117,7 @@ require 'builderFunctions.php';
                         <option value="shortbow">Shortbow - 1d6 piercing - Ammunition, Range(80/320), Two-Handed</option>\
                         <option value="sling">Sling - 1d4 piercing - Ammunition, Range(30/120)</option>\
                         </select></li>\
-                        <li><select name="option2" id="option2" form="jobStuff>\
+                        <li><select name="option4" id="option4" form="jobStuff>\
                         <option value="">------</option>\
                         <option value="priest">priest pack</option>\
                         <option value="explorer">explorer pack</option>\
@@ -1738,7 +1738,11 @@ require 'builderFunctions.php';
                         <option value="crossbowBolt">Light Crossbow and 20 bolts - 1d8 piercing - Ammunition, Range(80/320), Loading, Two-Handed</option>\
                         <option value="2handaxes">2 Handaxes - 1d6 slashing - Light, Thrown (20/60)</option>\
                         </select></li>\
-                        <li>A dungeoneer pack or an explorer pack</li>\
+                        <li><select name="option4" id="option4" form="jobStuff>\
+                        <option value="">------</option>\
+                        <option value="Dungeoneer Pack">Dungeoneer Pack</option>\
+                        <option value="Explorer Pack">Explorer Pack</option>\
+                        </select></li>\
                         </ul>';
             var $roll = '<p>roll 5d4 x 10 to find your starting gold:</p>\
                         <input name="result" id="result" readonly="readonly" form="jobstuff"></input>\
@@ -3286,7 +3290,7 @@ require 'builderFunctions.php';
                         <p>You can use an arcane focus as a spellcasting focus for your sorcerer spells.</p>\
                         <h1>Sorcerous Origin</h1>\
                         <p>Choose a sorcerous origin, which describes the source of your innate magical power. Your choice grants you features when you choose it at 1st level and again at 6th, 14th, and 18th level.</p>\
-                        <h1>Domain Spells</h1>"
+                        "
             if($('#roll').is(':checked')){
                 $("#description").append($table + $desc + $hp + $prof + $roll + $feats);
             }
@@ -3564,7 +3568,7 @@ require 'builderFunctions.php';
                         <option value="scholar">scholar pack</option>\
                         <option value="dungeoneer">dungeoneer pack</option>\
                         </select></li>\
-                        <li>Leather armor, any simple weapon, and two daggers</li>\
+                        <li>Leather armor and two daggers</li>\
                         </ul>';
             var $roll = '<p>roll 4d4 x 10 to find your starting gold:</p>\
                         <input name="result" id="result" readonly="readonly" form="jobstuff"></input>\
@@ -3588,8 +3592,7 @@ require 'builderFunctions.php';
                         <p><b>Spell attack modifier</b> = your proficiency bonus + your Charisma modifier</p>\
                         <h1>Spellcasting Focus</h1>\
                         <p>You can use an arcane focus as a spellcasting focus for your warlock spells.</p>\
-                        <h1>Eldritch Invocations</h1>\
-                        </p>"
+                        <p></p>"
             if($('#roll').is(':checked')){
                 $("#description").append($table + $desc + $hp + $prof + $roll + $feats);
             }

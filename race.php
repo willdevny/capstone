@@ -216,8 +216,8 @@ require 'builderFunctions.php';
                         <li><b>Keen Senses.</b>You have proficiency in the Perception skill.</li>\
                         <li><b>Cantrip.</b>You know one cantrip of your choice from the Wizard spell list. Intelligence is your spellcasting ability for it.</li>\
                         <li><b>Elf Weapon Training.</b>You have proficiency with the longsword, shortsword, shortbow, and longbow.</li>\
-                        <li><b>Extra Language.</b>You can speak, read, and write Common and Elven.</li>\
-                        <li><b>Languages.</b>You can read, speak, and write one additional language of your choice.</li>\
+                        <li><b>Extra Language.</b>You can read, speak, and write one additional language of your choice.</li>\
+                        <li><b>Languages.</b>You can speak, read, and write Common and Elven.</li>\
                         "
             var $ul = $("<ul>" + lis + "</ul>");
             var $final = $p.append($ul);
@@ -304,7 +304,7 @@ require 'builderFunctions.php';
                         <li><b>Darkvision.</b>Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.</li>\
                         <li><b>Gnome Cunning.</b>You have advantage on all Intelligence, Wisdom, and Charisma saves against magic.</li>\
                         <li><b>Natural Illusionist.</b>You know the Minor Illusion cantrip. Intelligence is your spellcasting modifier for it.</li>\
-                        <li><b><Speak with Small Beasts./b>Through sound and gestures, you may communicate simple ideas with Small or smaller beasts.</li>\
+                        <li><b>Speak with Small Beasts./b>Through sound and gestures, you may communicate simple ideas with Small or smaller beasts.</li>\
                         <li><b>Languages.</b>You can read, speak, and write Common and Gnomish.</li>"
             var $ul = $("<ul>" + lis + "</ul>");
             var $final = $p.append($ul);
@@ -357,6 +357,7 @@ require 'builderFunctions.php';
                         <li><b>Darkvision.</b>Thanks to your elven heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.</li>\
                         <li><b>Fey Ancestry.</b>You have advantage on saving throws against being charmed, and magic can't put you to sleep.</li>\
                         <li><b>Skill Versatility.</b> You gain proficiency in two skills of your choice.</li>\
+                        <li><b>Languages.</b>You can read, speak, and write Common, Elven, and one language of your choice.</li>\
                         "
             var $ul = $("<ul>" + lis + "</ul>");
             var $final = $p.append($ul);
