@@ -226,21 +226,21 @@ require 'builderFunctions.php';
                         <li><b>Hit Points at 1st Level:</b>12 + your Constitution modifier</li>\
                         <li><b>Hit Points at Higher Levels:</b> 1d12 (or 7) + your Constitution modifier per barbarian level after 1st</li>\
                         </ul>";
-            var $prof = "<h2>Proficiencies</h2>\
+            var $prof = '<h2>Proficiencies</h2>\
                         <ul>\
                         <li><b>Armour:</b>Light armor, medium armor, shields</li>\
                         <li><b>Weapons:</b>Simple weapons, martial weapons</li>\
                         <li><b>Tools:</b>None</li>\
                         <li><b>Saving Throws:</b>Strength and Constitution</li>\
                         <li><b>Skills:</b>Choose two from this list:\
-                        <select name='skills' id='skills' multiple form='jobStuff'>\
-                        <option value='animalHandling'>Animal Handling</option>\
-                        <option value='athletics'>Athletics</option>\
-                        <option value='intimidation'>Intimidation</option>\
-                        <option value='natue'>Nature</option>\
-                        <option value='perception'>Perception</option>\
-                        <option value='survival'>Survival</option>\
-                        </li></select></ul>";
+                        <select name="skills" id="skills" multiple form="jobStuff">\
+                        <option value="animalHandling">Animal Handling</option>\
+                        <option value="athletics">Athletics</option>\
+                        <option value="intimidation">Intimidation</option>\
+                        <option value="natue">Nature</option>\
+                        <option value="perception">Perception</option>\
+                        <option value="survival">Survival</option>\
+                        </select></li></ul>';
             var $noroll = '<h2>Equipment</h2>\
                         <p>You start with the following equipment, in addition to the equipment granted by your background:</p>\
                         <ul>\

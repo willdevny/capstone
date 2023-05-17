@@ -75,16 +75,18 @@ if(isset($_POST['Submit'])){
             $Cantrips = 3;
             $Spells = 6;
         }
+        echo("<script>console.log('test');</script>");
         if(isset($_POST['cantripList'])){
             if(count($_POST['cantripList']) == $Cantrips){
                 $_SESSION['cantrips'] = $_POST['cantripList'];
                 if(isset($_POST['spellList'])){
                     if(count($_POST['spellList']) == $Spells){
                         $_SESSION['spells'] = $_POST['spellList'];
+                        echo("<script>console.log('".$_SESSION['spells'][0]."');</script>");
                         if($_SESSION['class'] == 'Cleric' || $_SESSION['class'] == 'Sorcerer' || $_SESSION['class'] == 'Warlock'){
                             header("Location: subclass.php");
                         }
-                        else if($_SESSION['class'] == 'Cleric' || 'Sorcerer' || 'Warlock'){
+                        else{
                             getInfo();
                             header("Location: character-sheet.php");
                         }

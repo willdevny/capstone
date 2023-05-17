@@ -24,6 +24,9 @@ require 'builderFunctions.php';
 		</div>
 	</header>
     <article id="builder">
+    <p><?php echo $_SESSION['skills']; ?></p>
+    <p><?php echo $_SESSION['class']; ?></p>
+    <p><?php echo $_SESSION['equipment'][0]; ?></p>
     <p>Input manually or roll (4d6 drop lowest) for stats?</p>
     <p>Racial Modifiers are only automatically added if you choose to roll</p>
     <label for="noroll">Input stats:</label>
