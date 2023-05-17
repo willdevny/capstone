@@ -81,13 +81,12 @@ if(isset($_POST['Submit'])){
                 if(isset($_POST['spellList'])){
                     if(count($_POST['spellList']) == $Spells){
                         $_SESSION['spells'] == $_POST['spellList'];
-                        echo("<script>console.log('".$_SESSION['spells'][0]."');</script>");
                         if($_SESSION['class'] == 'Cleric' || $_SESSION['class'] == 'Sorcerer' || $_SESSION['class'] == 'Warlock'){
-                            // header("Location: subclass.php");
+                            header("Location: subclass.php");
                         }
                         else if($_SESSION['class'] == 'Cleric' || 'Sorcerer' || 'Warlock'){
                             getInfo();
-                            // header("Location: character-sheet.view.php?builder=true");
+                            header("Location: character-sheet.view.php?builder=true");
                         }
                     }
                 }
