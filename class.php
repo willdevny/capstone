@@ -23,9 +23,10 @@ require 'builderFunctions.php';
 		</div>
 	</header>
         <article id="builder">
+        <form method="POST" action="class.php">
         <label for="job">Choose a class:</label>    
-        <select name="job" id="job" onchange="getJob()" form="jobstuff">  
-            <option value="">------</option>
+        <select name="job" id="job" onchange="getJob()" >  
+            <option>------</option>
             <option value="Barbarian">Barbarian</option>
             <option value="Bard">Bard</option>
             <option value="Cleric">Cleric</option>
@@ -44,10 +45,11 @@ require 'builderFunctions.php';
         <input type="radio" id="noroll" name="gold" onchange="getJob()" checked>
         <label for="roll">Roll for gold:</label>
         <input type="radio" id="roll" name="gold" onchange="getJob()">
-    <form method="POST" action="class.php" name="jobstuff" id="jobstuff">
-    <input type="hidden" name="hidden" value="job" form="jobstuff">
-    <input type="Submit" name="Submit" value="Submit"  form="jobstuff">
+   
+    <input type="hidden" name="hidden" value="job" >
+    <input type="Submit" name="Submit" value="Submit"  >
     <div name="description" id="description"></div>
+</form>
         </article>    
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -233,7 +235,7 @@ require 'builderFunctions.php';
                         <li><b>Tools:</b>None</li>\
                         <li><b>Saving Throws:</b>Strength and Constitution</li>\
                         <li><b>Skills:</b>Choose two from this list:\
-                        <select name="skills" id="skills" multiple form="jobStuff">\
+                        <select name="skills[]" id="skills" multiple >\
                         <option value="animalHandling">Animal Handling</option>\
                         <option value="athletics">Athletics</option>\
                         <option value="intimidation">Intimidation</option>\
@@ -244,8 +246,8 @@ require 'builderFunctions.php';
             var $noroll = '<h2>Equipment</h2>\
                         <p>You start with the following equipment, in addition to the equipment granted by your background:</p>\
                         <ul>\
-                        <li><select name="option1" id="option1" form="jobStuff>\
-                        <option value="">------</option>\
+                        <li><select name="option1" id="option1" >\
+                        <option>------</option>\
                         <option value="battleaxe">Battleaxe - 1d8 slashing - Versatile(1d10)</option>\
                         <option value="flail">Flail - 1d8 bludgeoning - </option>\
                         <option value="glaive">Glaive - 1d10 slashing - Heavy, Reach, Two-Handed</option>\
@@ -265,8 +267,8 @@ require 'builderFunctions.php';
                         <option value="warhammer">Warhammer - 1d8 bludgeoning - Versatile(1d10)</option>\
                         <option value="whip">Whip - 1d4 slashing - Finesse, Reach</option>\
                         </select></li>\
-                        <li><select name="option2" id="option2" form="jobStuff>\
-                        <option value="">------</option>\
+                        <li><select name="option2" id="option2" >\
+                        <option>------</option>\
                         <option value="club">Club - 1d4 bludgeoning - Light</option>\
                         <option value="2handaxes">2 Handaxes - 1d6 slashing - Light, Thrown (20/60)</option>\
                         <option value="dagger">Dagger - 1d4 piercing - Finesse, Light, Thrown (20/60)</option>\
@@ -285,7 +287,7 @@ require 'builderFunctions.php';
                         <li>An explorer pack and four javelins</li>\
                         </ul>';
             var $roll = '<p>roll 2d4 x 10 to find your starting gold:</p>\
-                        <input name="result" id="result" readonly="readonly" form="jobstuff"></input>\
+                        <input name="result" id="result" readonly="readonly" ></input>\
                         <button type = "button" onclick="rollGold(2, 10)">ROLL</button>'
             var $feats = "<h2>Rage</h2>\
                         <p>In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action.</p>\
@@ -662,7 +664,7 @@ require 'builderFunctions.php';
                         <li><b>Tools:</b>Three musical instruments of your choice</li>\
                         <li><b>Saving Throws:</b>Dexterity and Charisma</li>\
                         <li><b>Skills:</b>Choose three from this list:\
-                        <select name='skills' id='skills' multiple form='jobStuff'>\
+                        <select name='skills[]' id='skills' multiple >\
                         <option value='acrobatics'>Acrobatics</option>\
                         <option value='animalHandling'>Animal Handling</option>\
                         <option value='arcana'>Arcana</option>\
@@ -685,7 +687,7 @@ require 'builderFunctions.php';
             var $noroll = '<h2>Equipment</h2>\
                         <p>You start with the following equipment, in addition to the equipment granted by your background:</p>\
                         <ul>\
-                        <li><select name="option1" id="option1" form="jobStuff>\
+                        <li><select name="option1" id="option1" >\
                         <option value="">------</option>\
                         <option value="longsword">Longsword - 1d8 slashing - Versatile(1d10)</option>\
                         <option value="rapier">Rapier - 1d8 piercing - Finesse</option>\
@@ -704,7 +706,7 @@ require 'builderFunctions.php';
                         <option value="shortbow">Shortbow - 1d6 piercing - Ammunition, Range(80/320), Two-Handed</option>\
                         <option value="sling">Sling - 1d4 piercing - Ammunition, Range(30/120)</option>\
                         </select></li>\
-                        <li><select name="option2" id="option2" form="jobStuff>\
+                        <li><select name="option2" id="option2" >\
                         <option value="">------</option>\
                         <option value="diplomat">diplomat pack</option>\
                         <option value="entertainer">entertainer pack</option>\
@@ -712,7 +714,7 @@ require 'builderFunctions.php';
                         <li>Any musical instrument, Leather Armor and a Dagger</li>\
                         </ul>';
             var $roll = '<p>roll 5d4 x 10 to find your starting gold:</p>\
-                        <input name="result" id="result" readonly="readonly" form="jobstuff"></input>\
+                        <input name="result" id="result" readonly="readonly" ></input>\
                         <button type = "button" onclick="rollGold(5, 10)">ROLL</button>'
             var $feats = "<h1>Spellcasting</h1>\
                         <p>You have learned to untangle and reshape the fabric of reality in harmony with your wishes and music. Your spells are part of your vast repertoire, magic that you can tune to different situations.</p>\
@@ -1079,7 +1081,7 @@ require 'builderFunctions.php';
                         <li><b>Tools:</b>None</li>\
                         <li><b>Saving Throws:</b>Wisdom and Charisma</li>\
                         <li><b>Skills:</b>Choose two from this list:\
-                        <select name='skills' id='skills' multiple form='jobStuff'>\
+                        <select name='skills[]' id='skills' multiple >\
                         <option value='history'>History</option>\
                         <option value='insight'>Insight</option>\
                         <option value='medicine'>Medicine</option>\
@@ -1089,18 +1091,18 @@ require 'builderFunctions.php';
             var $noroll = '<h2>Equipment</h2>\
                         <p>You start with the following equipment, in addition to the equipment granted by your background:</p>\
                         <ul>\
-                        <li><select name="option1" id="option1" form="jobStuff>\
+                        <li><select name="option1" id="option1" >\
                         <option value="">------</option>\
                         <option value="mace">Mace - 1d6 bludgeoning - </option>\
                         <option value="warhammer">Warhammer - 1d8 bludgeoning - Versatile(1d10)</option>\
                         </select></li>\
-                        <li><select name="option2" id="option2" form="jobStuff>\
+                        <li><select name="option2" id="option2" >\
                         <option value="">------</option>\
                         <option value="scaleMail">Scale Mail - AC 14 + Dex modifier(max 2)</option>\
                         <option value="leatherArmour">Leather Armour - AC 11 + Dex modifier</option>\
                         <option value="chainMail">Chain Mail- AC 16</option>\
                         </select></li>\
-                        <li><select name="option3" id="option3" form="jobStuff>\
+                        <li><select name="option3" id="option3" >\
                         <option value="">------</option>\
                         <option value="crossbowBolt">Light Crossbow and 20 bolts - 1d8 piercing - Ammunition, Range(80/320), Loading, Two-Handed</option>\
                         <option value="club">Club - 1d4 bludgeoning - Light</option>\
@@ -1117,7 +1119,7 @@ require 'builderFunctions.php';
                         <option value="shortbow">Shortbow - 1d6 piercing - Ammunition, Range(80/320), Two-Handed</option>\
                         <option value="sling">Sling - 1d4 piercing - Ammunition, Range(30/120)</option>\
                         </select></li>\
-                        <li><select name="option4" id="option4" form="jobStuff>\
+                        <li><select name="option4" id="option4" >\
                         <option value="">------</option>\
                         <option value="priest">priest pack</option>\
                         <option value="explorer">explorer pack</option>\
@@ -1125,7 +1127,7 @@ require 'builderFunctions.php';
                         <li>A Shield and a Holy Symbol</li>\
                         </ul>';
             var $roll = '<p>roll 5d4 x 10 to find your starting gold:</p>\
-                        <input name="result" id="result" readonly="readonly" form="jobstuff"></input>\
+                        <input name="result" id="result" readonly="readonly" ></input>\
                         <button type = "button" onclick="rollGold(5, 10)">ROLL</button>'
             var $feats = "<h1>Spellcasting</h1>\
                         <p>As a conduit for divine power, you can cast cleric spells.</p>\
@@ -1490,7 +1492,7 @@ require 'builderFunctions.php';
                         <li><b>Tools:</b>Herbalism kit</li>\
                         <li><b>Saving Throws:</b>Wisdom and Intelligence</li>\
                         <li><b>Skills:</b>Choose two from this list:\
-                        <select name='skills' id='skills' multiple form='jobStuff'>\
+                        <select name='skills[]' id='skills' multiple >\
                         <option value='arcana'>Arcana</option>\
                         <option value='animalHandling'>Animal Handling</option>\
                         <option value='insight'>Insight</option>\
@@ -1503,7 +1505,7 @@ require 'builderFunctions.php';
             var $noroll = '<h2>Equipment</h2>\
                         <p>You start with the following equipment, in addition to the equipment granted by your background:</p>\
                         <ul>\
-                        <li><select name="option1" id="option1" form="jobStuff>\
+                        <li><select name="option1" id="option1" >\
                         <option value="">------</option>\
                         <option value="woodShield">Wooden Shield - +2 AC</option>\
                         <option value="club">Club - 1d4 bludgeoning - Light</option>\
@@ -1521,7 +1523,7 @@ require 'builderFunctions.php';
                         <option value="shortbow">Shortbow - 1d6 piercing - Ammunition, Range(80/320), Two-Handed</option>\
                         <option value="sling">Sling - 1d4 piercing - Ammunition, Range(30/120)</option>\
                         </select></li>\
-                        <li><select name="option2" id="option2" form="jobStuff>\
+                        <li><select name="option2" id="option2" >\
                         <option value="">------</option>\
                         <option value="2handaxes">2 Handaxes - 1d6 slashing - Light, Thrown (20/60)</option>\
                         <option value="scimitar">Scimitar - 1d6 slashing - Finesse, Light</option>\
@@ -1538,7 +1540,7 @@ require 'builderFunctions.php';
                         <li>Leather armour, an explorer pack and a druidic focus</li>\
                         </ul>';
             var $roll = '<p>roll 2d4 x 10 to find your starting gold:</p>\
-                        <input name="result" id="result" readonly="readonly" form="jobstuff"></input>\
+                        <input name="result" id="result" readonly="readonly" ></input>\
                         <button type = "button" onclick="rollGold(2, 10)">ROLL</button>'
             var $feats = "<h1>Spellcasting</h1>\
                         <p>Drawing on the divine essence of nature itself, you can cast spells to shape that essence to your will.</p>\
@@ -1687,7 +1689,7 @@ require 'builderFunctions.php';
                         <li><b>Tools:</b>None</li>\
                         <li><b>Saving Throws:</b>Strength and Constitution</li>\
                         <li><b>Skills:</b>Choose two from this list:\
-                        <select name='skills' id='skills' multiple form='jobStuff'>\
+                        <select name='skills[]' id='skills' multiple >\
                         <option value='acrobatic'>Acrobatics</option>\
                         <option value='animalHandling'>Animal Handling</option>\
                         <option value='athletics'>Athletics</option>\
@@ -1700,13 +1702,13 @@ require 'builderFunctions.php';
             var $noroll = '<h2>Equipment</h2>\
                         <p>You start with the following equipment, in addition to the equipment granted by your background:</p>\
                         <ul>\
-                        <li><select name="option1" id="option1" form="jobStuff>\
+                        <li><select name="option1" id="option1" >\
                         <option value="">------</option>\
                         <option value="chainmail">Chainmail - AC 16</option>\
                         <option value="leatherBow">Leather Armour(AC11+dex) and Longbow with 20 arrows</option>\
                         </select></li>\
                         <p>Select two options from this list</p>\
-                        <li><select name="option2" id="option2" form="jobStuff>\
+                        <li><select name="option2" id="option2" >\
                         <option value="">------</option>\
                         <option value="shield">Shield - +2 AC</option>\
                         <option value="battleaxe">Battleaxe - 1d8 slashing - Versatile(1d10)</option>\
@@ -1733,22 +1735,22 @@ require 'builderFunctions.php';
                         <option value="longbow">Longbow - 1d8 piercing - Ammunition, Range(150/600), Heavy. Two-Handed</option>\
                         <option value="net">Shield - - Special, Range(5/15)</option>\
                         </select></li>\
-                        <li><select name="option3" id="option3" form="jobStuff>\
+                        <li><select name="option3" id="option3" >\
                         <option value="">------</option>\
                         <option value="crossbowBolt">Light Crossbow and 20 bolts - 1d8 piercing - Ammunition, Range(80/320), Loading, Two-Handed</option>\
                         <option value="2handaxes">2 Handaxes - 1d6 slashing - Light, Thrown (20/60)</option>\
                         </select></li>\
-                        <li><select name="option4" id="option4" form="jobStuff>\
+                        <li><select name="option4" id="option4" >\
                         <option value="">------</option>\
                         <option value="Dungeoneer Pack">Dungeoneer Pack</option>\
                         <option value="Explorer Pack">Explorer Pack</option>\
                         </select></li>\
                         </ul>';
             var $roll = '<p>roll 5d4 x 10 to find your starting gold:</p>\
-                        <input name="result" id="result" readonly="readonly" form="jobstuff"></input>\
+                        <input name="result" id="result" readonly="readonly" ></input>\
                         <button type = "button" onclick="rollGold(5, 10)">ROLL</button>'
             var $feats = '<h2>Fighting Style</h2>\
-                        <li><select name="fightingstyle" id="fightingstyle" form="jobStuff>\
+                        <li><select name="fightingstyle" id="fightingstyle" >\
                         <option value="">------</option>\
                         <option value="archery">Archery - You gain a +2 bonus to attack rolls you make with ranged weapons.</option>\
                         <option value="blind">Blind Fighting - You have blindsight with a range of 10 feet.</option>\
@@ -1963,7 +1965,7 @@ require 'builderFunctions.php';
                         <li><b>Tools:</b>Choose one type of artisan's tools or one musical instrument</li>\
                         <li><b>Saving Throws:</b>Strength and Dexterity</li>\
                         <li><b>Skills:</b>Choose two from this list:\
-                        <select name='skills' id='skills' multiple form='jobStuff'>\
+                        <select name='skills[]' id='skills' multiple >\
                         <option value='acrobatics'>Acrobatics</option>\
                         <option value='athletics'>Athletics</option>\
                         <option value='history'>History</option>\
@@ -1974,7 +1976,7 @@ require 'builderFunctions.php';
             var $noroll = '<h2>Equipment</h2>\
                         <p>You start with the following equipment, in addition to the equipment granted by your background:</p>\
                         <ul>\
-                        <li><select name="option1" id="option1" form="jobStuff>\
+                        <li><select name="option1" id="option1" >\
                         <option value="">------</option>\
                         <option value="shortsword">Shortsword - 1d6 piercing - Finesse, Light</option>\
                         <option value="club">Club - 1d4 bludgeoning - Light</option>\
@@ -1992,7 +1994,7 @@ require 'builderFunctions.php';
                         <option value="shortbow">Shortbow - 1d6 piercing - Ammunition, Range(80/320), Two-Handed</option>\
                         <option value="sling">Sling - 1d4 piercing - Ammunition, Range(30/120)</option>\
                         </select></li>\
-                        <li><select name="option2" id="option2" form="jobStuff>\
+                        <li><select name="option2" id="option2" >\
                         <option value="">------</option>\
                         <option value="dungeoneer">Dungeoneer pack</option>\
                         <option value="explorer">Explorer pack</option>\
@@ -2000,7 +2002,7 @@ require 'builderFunctions.php';
                         <li>10 darts</li>\
                         </ul>';
             var $roll = '<p>roll 5d4 to find your starting gold:</p>\
-                        <input name="result" id="result" readonly="readonly" form="jobstuff"></input>\
+                        <input name="result" id="result" readonly="readonly" ></input>\
                         <button type = "button" onclick="rollGold(5, 0)">ROLL</button>'
             var $feats = "<h2>Martial Arts</h2>\
                         <p>At 1st level, your practice of martial arts gives you mastery of combat styles that use unarmed strikes and monk weapons, which are shortswords and any simple melee weapons that don't have the two-handed or heavy property.</p>\
@@ -2248,7 +2250,7 @@ require 'builderFunctions.php';
                         <li><b>Tools:</b>None</li>\
                         <li><b>Saving Throws:</b>Wisdom and Charisma</li>\
                         <li><b>Skills:</b>Choose two from this list:\
-                        <select name='skills' id='skills' multiple form='jobStuff'>\
+                        <select name='skills[]' id='skills' multiple >\
                         <option value='athletics'>Athletics</option>\
                         <option value='insight'>Insight</option>\
                         <option value='intimidation'>Intimidation</option>\
@@ -2259,7 +2261,7 @@ require 'builderFunctions.php';
             var $noroll = '<h2>Equipment</h2>\
                         <p>You start with the following equipment, in addition to the equipment granted by your background:</p>\
                         <ul>\
-                        <li>Select two from this list:<select name="option1" id="option1" form="jobStuff>\
+                        <li>Select two from this list:<select name="option1" id="option1" >\
                         <option value="">------</option>\
                         <option value="shield">Shield - +2 AC</option>\
                         <option value="battleaxe">Battleaxe - 1d8 slashing - Versatile(1d10)</option>\
@@ -2287,7 +2289,7 @@ require 'builderFunctions.php';
                         <option value="net">Shield - - Special, Range(5/15)</option>\
                         </select></li>\
                         </select></li>\
-                        <li><select name="option2" id="option2" form="jobStuff>\
+                        <li><select name="option2" id="option2" >\
                         <option value="">------</option>\
                         <option value="5javelin">5 Javelins - 1d6 piercing - Thrown(30/120)</option>\
                         <option value="club">Club - 1d4 bludgeoning - Light</option>\
@@ -2304,7 +2306,7 @@ require 'builderFunctions.php';
                         <option value="shortbow">Shortbow - 1d6 piercing - Ammunition, Range(80/320), Two-Handed</option>\
                         <option value="sling">Sling - 1d4 piercing - Ammunition, Range(30/120)</option>\
                         </select></li>\
-                        <li><select name="option3" id="option3" form="jobStuff>\
+                        <li><select name="option3" id="option3" >\
                         <option value="">------</option>\
                         <option value="priest">priest pack</option>\
                         <option value="explorer">explorer pack</option>\
@@ -2312,7 +2314,7 @@ require 'builderFunctions.php';
                         <li>Chainmail and a Holy Symbol</li>\
                         </ul>';
             var $roll = '<p>roll 5d4 x 10 to find your starting gold:</p>\
-                        <input name="result" id="result" readonly="readonly" form="jobstuff"></input>\
+                        <input name="result" id="result" readonly="readonly" ></input>\
                         <button type = "button" onclick="rollGold(5, 10)">ROLL</button>'
             var $feats = "<h1>Divine Sense</h1>\
                         <p>The presence of strong evil registers on your senses like a noxious odor, and powerful good rings like heavenly music in your ears. As an action, you can open your awareness to detect such forces. Until the end of your next turn, you know the location of any celestial, fiend, or undead within 60 feet of you that is not behind total cover. You know the type (celestial, fiend, or undead) of any being whose presence you sense, but not its identity (the vampire Count Strahd von Zarovich, for instance). Within the same radius, you also detect the presence of any place or object that has been consecrated or desecrated, as with the Hallow spell.</p>\
@@ -2579,7 +2581,7 @@ require 'builderFunctions.php';
                         <li><b>Tools:</b>None</li>\
                         <li><b>Saving Throws:</b>Strength and Dexterity</li>\
                         <li><b>Skills:</b>Choose three from this list:\
-                        <select name='skills' id='skills' multiple form='jobStuff'>\
+                        <select name='skills[]' id='skills' multiple >\
                         <option value='animalHandling'>Animal Handling</option>\
                         <option value='athletics'>Athletics</option>\
                         <option value='insight'>Insight</option>\
@@ -2592,13 +2594,13 @@ require 'builderFunctions.php';
             var $noroll = '<h2>Equipment</h2>\
                         <p>You start with the following equipment, in addition to the equipment granted by your background:</p>\
                         <ul>\
-                        <li>Select two from this list:<select name="option1" id="option1" form="jobStuff>\
+                        <li>Select two from this list:<select name="option1" id="option1" >\
                         <option value="">------</option>\
                         <option value="scalemail">Scalemail - AC 14 + Dex(Max 2)</option>\
                         <option value="leather">Leather Armour - AC 11 + Dex</option>\
                         </select></li>\
                         </select></li>\
-                        <li><select name="option2" id="option2" form="jobStuff>\
+                        <li><select name="option2" id="option2" >\
                         <option value="">------</option>\
                         <option value="shortsword">Shortsword - 1d6 piercing - Finesse, Light</option>\
                         <option value="javelin">Javelin - 1d6 piercing - Thrown(30/120) </option>\
@@ -2616,7 +2618,7 @@ require 'builderFunctions.php';
                         <option value="shortbow">Shortbow - 1d6 piercing - Ammunition, Range(80/320), Two-Handed</option>\
                         <option value="sling">Sling - 1d4 piercing - Ammunition, Range(30/120)</option>\
                         </select></li>\
-                        <li><select name="option3" id="option3" form="jobStuff>\
+                        <li><select name="option3" id="option3" >\
                         <option value="">------</option>\
                         <option value="priest">dungeoneer pack</option>\
                         <option value="explorer">explorer pack</option>\
@@ -2624,7 +2626,7 @@ require 'builderFunctions.php';
                         <li>A longbow and a quiver of 20 arrows</li>\
                         </ul>';
             var $roll = '<p>roll 5d4 x 10 to find your starting gold:</p>\
-                        <input name="result" id="result" readonly="readonly" form="jobstuff"></input>\
+                        <input name="result" id="result" readonly="readonly" ></input>\
                         <button type = "button" onclick="rollGold(5, 10)">ROLL</button>'
             var $feats = "<h1>Favored Enemy</h1>\
                         <p>Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy.</p>\
@@ -2798,7 +2800,7 @@ require 'builderFunctions.php';
                         <li><b>Tools:</b>Thieves' tools</li>\
                         <li><b>Saving Throws:</b>Dexterity and intelligence</li>\
                         <li><b>Skills:</b>Choose four from this list:\
-                        <select name='skills' id='skills' multiple form='jobStuff'>\
+                        <select name='skills[]' id='skills' multiple >\
                         <option value='acrobatic'>Acrobatics</option>\
                         <option value='athletics'>Athletics</option>\
                         <option value='deception'>Deception</option>\
@@ -2814,17 +2816,17 @@ require 'builderFunctions.php';
             var $noroll = '<h2>Equipment</h2>\
                         <p>You start with the following equipment, in addition to the equipment granted by your background:</p>\
                         <ul>\
-                        <li><select name="option1" id="option1" form="jobStuff>\
+                        <li><select name="option1" id="option1" >\
                         <option value="">------</option>\
                         <option value="rapier">Rapier - 1d8 piercing - Finesse</option>\
                         <option value="shortsword">Shortsword - 1d6 piercing - Finesse, Light</option>\
                         </select></li>\
-                        <li><select name="option2" id="option2" form="jobStuff>\
+                        <li><select name="option2" id="option2" >\
                         <option value="">------</option>\
                         <option value="shortBow">Short Bow - 1d6 piercing - Ammunition, Range(80/320), Two-Handed</option>\
                         <option value="shortsword">Shortsword - 1d6 piercing - Finesse, Light</option>\
                         </select></li>\
-                        <li><select name="option3" id="option3" form="jobStuff>\
+                        <li><select name="option3" id="option3" >\
                         <option value="">------</option>\
                         <option value="burglar">Burglar Pack</option>\
                         <option value="dungeoneer">Dungeoneer Pack</option>\
@@ -2833,7 +2835,7 @@ require 'builderFunctions.php';
                         <li>Leather armor, two Daggers, and Thieves Tools</li>\
                         </ul>';
             var $roll = '<p>roll 4d4 x 10 to find your starting gold:</p>\
-                        <input name="result" id="result" readonly="readonly" form="jobstuff"></input>\
+                        <input name="result" id="result" readonly="readonly" ></input>\
                         <button type = "button" onclick="rollGold(4, 10)">ROLL</button>'
             var $feats = '<h2>Expertise</h2>\
                         <p>At 1st level, choose two of your skill proficiencies, or one of your skill proficiencies and your proficiency with thieves tools. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.</p>\
@@ -3228,7 +3230,7 @@ require 'builderFunctions.php';
                         <li><b>Tools:</b>None</li>\
                         <li><b>Saving Throws:</b>Consitution and Charisma</li>\
                         <li><b>Skills:</b>Choose two from this list:\
-                        <select name='skills' id='skills' multiple form='jobStuff'>\
+                        <select name='skills[]' id='skills' multiple >\
                         <option value='arcana'>Arcana</option>\
                         <option value='deception'>Deception</option>\
                         <option value='insight'>Insight</option>\
@@ -3239,7 +3241,7 @@ require 'builderFunctions.php';
             var $noroll = '<h2>Equipment</h2>\
                         <p>You start with the following equipment, in addition to the equipment granted by your background:</p>\
                         <ul>\
-                        <li><select name="option1" id="option1" form="jobStuff>\
+                        <li><select name="option1" id="option1" >\
                         <option value="">------</option>\
                         <option value="crossbowBolt">Light Crossbow and 20 bolts - 1d8 piercing - Ammunition, Range(80/320), Loading, Two-Handed</option>\
                         <option value="club">Club - 1d4 bludgeoning - Light</option>\
@@ -3256,12 +3258,12 @@ require 'builderFunctions.php';
                         <option value="shortbow">Shortbow - 1d6 piercing - Ammunition, Range(80/320), Two-Handed</option>\
                         <option value="sling">Sling - 1d4 piercing - Ammunition, Range(30/120)</option>\
                         </select></li>\
-                        <li><select name="option2" id="option2" form="jobStuff>\
+                        <li><select name="option2" id="option2" >\
                         <option value="">------</option>\
                         <option value="pouch">Component Pouch</option>\
                         <option value="focus">Arcane Focus</option>\
                         </select></li>\
-                        <li><select name="option3" id="option3" form="jobStuff>\
+                        <li><select name="option3" id="option3" >\
                         <option value="">------</option>\
                         <option value="dungeoneer">Dungeoneer Pack</option>\
                         <option value="explorer">Explorer Pack</option>\
@@ -3269,7 +3271,7 @@ require 'builderFunctions.php';
                         <li>Two daggers</li>\
                         </ul>';
             var $roll = '<p>roll 3d4 x 10 to find your starting gold:</p>\
-                        <input name="result" id="result" readonly="readonly" form="jobstuff"></input>\
+                        <input name="result" id="result" readonly="readonly" ></input>\
                         <button type = "button" onclick="rollGold(3, 10)">ROLL</button>'
             var $feats = "<h1>Spellcasting</h1>\
                         <p>An event in your past, or in the life of a parent or ancestor, left an indelible mark on you, infusing you with arcane magic. This font of magic, whatever its origin, fuels your spells.</p>\
@@ -3528,7 +3530,7 @@ require 'builderFunctions.php';
                         <li><b>Tools:</b>None</li>\
                         <li><b>Saving Throws:</b>Wisdom and Charisma</li>\
                         <li><b>Skills:</b>Choose two from this list:\
-                        <select name='skills' id='skills' multiple form='jobStuff'>\
+                        <select name='skills[]' id='skills' multiple >\
                         <option value='arcana'>Arcana</option>\
                         <option value='deception'>Deception</option>\
                         <option value='history'>History</option>\
@@ -3540,7 +3542,7 @@ require 'builderFunctions.php';
             var $noroll = '<h2>Equipment</h2>\
                         <p>You start with the following equipment, in addition to the equipment granted by your background:</p>\
                         <ul>\
-                        <li>Select two from this list:<select name="option1" id="option1" form="jobStuff>\
+                        <li>Select two from this list:<select name="option1" id="option1" >\
                         <option value="">------</option>\
                         <option value="crossbowBolt">Light Crossbow and 20 bolts - 1d8 piercing - Ammunition, Range(80/320), Loading, Two-Handed</option>\
                         <option value="club">Club - 1d4 bludgeoning - Light</option>\
@@ -3558,12 +3560,12 @@ require 'builderFunctions.php';
                         <option value="sling">Sling - 1d4 piercing - Ammunition, Range(30/120)</option>\
                         </select></li>\
                         </select></li>\
-                        <li><select name="option2" id="option2" form="jobStuff>\
+                        <li><select name="option2" id="option2" >\
                         <option value="">------</option>\
                         <option value="pouch">Component Pouch</option>\
                         <option value="focus">Arcane Focus</option>\
                         </select></li>\
-                        <li><select name="option3" id="option3" form="jobStuff>\
+                        <li><select name="option3" id="option3" >\
                         <option value="">------</option>\
                         <option value="scholar">scholar pack</option>\
                         <option value="dungeoneer">dungeoneer pack</option>\
@@ -3571,7 +3573,7 @@ require 'builderFunctions.php';
                         <li>Leather armor and two daggers</li>\
                         </ul>';
             var $roll = '<p>roll 4d4 x 10 to find your starting gold:</p>\
-                        <input name="result" id="result" readonly="readonly" form="jobstuff"></input>\
+                        <input name="result" id="result" readonly="readonly" ></input>\
                         <button type = "button" onclick="rollGold(4, 10)">ROLL</button>'
             var $feats = "<h1>Otherworldly Patron</h1>\
                         <p>At 1st level, you have struck a bargain with an otherworldly being of your choice. Your choice grants you features at 1st level and again at 6th, 10th, and 14th level.</p>\
@@ -3934,7 +3936,7 @@ require 'builderFunctions.php';
                         <li><b>Tools:</b>None</li>\
                         <li><b>Saving Throws:</b>Wisdom and Intelligence</li>\
                         <li><b>Skills:</b>Choose two from this list:\
-                        <select name='skills' id='skills' multiple form='jobStuff'>\
+                        <select name='skills[]' id='skills' multiple >\
                         <option value='arcane'>Arcane</option>\
                         <option value='history'>History</option>\
                         <option value='insight'>Insight</option>\
@@ -3945,17 +3947,17 @@ require 'builderFunctions.php';
             var $noroll = '<h2>Equipment</h2>\
                         <p>You start with the following equipment, in addition to the equipment granted by your background:</p>\
                         <ul>\
-                        <li><select name="option1" id="option1" form="jobStuff>\
+                        <li><select name="option1" id="option1" >\
                         <option value="">------</option>\
                         <option value="quarterstaff">Quarterstaff - 1d6 bludgeoning - Versatile(1d8)</option>\
                         <option value="dagger">Dagger - 1d4 piercing - Finesse, Light, Thrown (20/60)</option>\
                         </select></li>\
-                        <li><select name="option2" id="option2" form="jobStuff>\
+                        <li><select name="option2" id="option2" >\
                         <option value="">------</option>\
                         <option value="pouch">Component Pouch</option>\
                         <option value="focus">Arcane Focus</option>\
                         </select></li>\
-                        <li><select name="option3" id="option3" form="jobStuff>\
+                        <li><select name="option3" id="option3" >\
                         <option value="">------</option>\
                         <option value="scholar">scholar pack</option>\
                         <option value="explorer">explorer pack</option>\
@@ -3963,7 +3965,7 @@ require 'builderFunctions.php';
                         <li>A Spellbook</li>\
                         </ul>';
             var $roll = '<p>roll 4d4 x 10 to find your starting gold:</p>\
-                        <input name="result" id="result" readonly="readonly" form="jobstuff"></input>\
+                        <input name="result" id="result" readonly="readonly" ></input>\
                         <button type = "button" onclick="rollGold(4, 10)">ROLL</button>'
             var $feats = "<h1>Spellcasting</h1>\
                         <p>As a student of arcane magic, you have a spellbook containing spells that show the first glimmerings of your true power.</p>\

@@ -62,7 +62,6 @@ require 'builderFunctions.php';
     function getSub(){
         $("#description").html("");
         var sub=$('#subclass').val();
-        console.log(sub)
         if(sub=="Knowledge"){
             var table = "<table>\
                             <tr>\

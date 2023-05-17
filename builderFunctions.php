@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 if(isset($_POST['Submit'])){
     if($_POST['hidden'] == "race"){
         if($_POST['race']!= ""){
@@ -12,10 +13,12 @@ if(isset($_POST['Submit'])){
         if($_POST['job']!= ""){
             $_SESSION['class'] = $_POST['job'];
             $_SESSION['skills'] = $_POST['skills'];
+
             $_SESSION['equipment'] = [];
             $_SESSION['gold'] = '';
             if(isset($_POST['option1'])){
                 array_push($_SESSION['equipment'], $_POST['option1']);
+
             }
             if(isset($_POST['option2'])){
                 array_push($_SESSION['equipment'], $_POST['option2']);
@@ -24,7 +27,7 @@ if(isset($_POST['Submit'])){
                 array_push($_SESSION['equipment'], $_POST['option3']);
             }
             if(isset($_POST['option4'])){
-                array_push($_SESSION['equipment'], $_POST['option1']);
+                array_push($_SESSION['equipment'], $_POST['option4']);
             }
             if(isset($_POST['result'])){
                 $_SESSION['gold'] = $_POST['result'];
@@ -43,7 +46,7 @@ if(isset($_POST['Submit'])){
             }
             else{
                 getInfo();
-                header("Location: character-sheet.php");
+                // header("Location: character-sheet.php");
             }
         }
     }
@@ -75,20 +78,18 @@ if(isset($_POST['Submit'])){
             $Cantrips = 3;
             $Spells = 6;
         }
-        echo("<script>console.log('test');</script>");
         if(isset($_POST['cantripList'])){
             if(count($_POST['cantripList']) == $Cantrips){
                 $_SESSION['cantrips'] = $_POST['cantripList'];
                 if(isset($_POST['spellList'])){
                     if(count($_POST['spellList']) == $Spells){
                         $_SESSION['spells'] = $_POST['spellList'];
-                        echo("<script>console.log('".$_SESSION['spells'][0]."');</script>");
                         if($_SESSION['class'] == 'Cleric' || $_SESSION['class'] == 'Sorcerer' || $_SESSION['class'] == 'Warlock'){
                             header("Location: subclass.php");
                         }
                         else{
                             getInfo();
-                            header("Location: character-sheet.php");
+                            // header("Location: character-sheet.php");
                         }
                     }
                 }
@@ -98,7 +99,7 @@ if(isset($_POST['Submit'])){
     else if($_POST['hidden'] == "subclass"){
         $_SESSION['subclass'] = $_POST['subclass'];
         getInfo();
-        header("Location: character-sheet.php");
+        // header("Location: character-sheet.php");
     }
 }
 else{
@@ -123,7 +124,7 @@ function getInfo(){
         $_SESSION['size'] = 'medium';
         $_SESSION['languages'] = ['Common', 'A language of your choice'];
     }
-    else if($_SESSION['race'] == "Variant-Human"){
+    else if($_SESSION['race'] == "Dragonborn"){
         $_SESSION['raceFeats'] = ['Draconic Ancestry', 'Breath Weapon', 'Damage Resistance'];
         $_SESSION['speed'] = '30';
         $_SESSION['size'] = 'medium';
@@ -302,6 +303,32 @@ function getInfo(){
         $_SESSION['hitdice'] = '1d6';
         array_push($_SESSION['equipment'], 'Spell Book');
     }
+    echo("<script>console.log('".$_SESSION['class']."');</script>");
+    echo("<script>console.log('".$_SESSION['race']."');</script>");
+    echo("<script>console.log('".$_SESSION['skills'][0]."');</script>");
+    echo("<script>console.log('".$_SESSION['equipment'][0]."');</script>");
+    echo("<script>console.log('".$_SESSION['gold']."');</script>");
+    echo("<script>console.log('".$_SESSION['speed']."');</script>");
+    echo("<script>console.log('".$_SESSION['size']."');</script>");
+    echo("<script>console.log('".$_SESSION['languages'][0]."');</script>");
+    echo("<script>console.log('".$_SESSION['HP']."');</script>");
+    echo("<script>console.log('".$_SESSION['profs'][0]."');</script>");
+    echo("<script>console.log('".$_SESSION['classFeats'][0]."');</script>");
+    echo("<script>console.log('".$_SESSION['throws'][0]."');</script>");
+    echo("<script>console.log('".$_SESSION['hitdice']."');</script>");
+    echo("<script>console.log('".$_SESSION['Stats'][0]."');</script>");
+    if(isset($_SESSION['cantrips'])){
+        echo("<script>console.log('".$_SESSION['cantrips'][0]."');</script>");
+    }
+    if(isset($_SESSION['spells'])){
+        echo("<script>console.log('".$_SESSION['spells'][0]."');</script>");
+    }
+    if(isset($_SESSION['raceFeats'])){
+        echo("<script>console.log('".$_SESSION['raceFeats'][0]."');</script>");
+    }
+    if(isset($_SESSION['subclass'])){
+        echo("<script>console.log('".$_SESSION['subclass']."');</script>");
+    }
 }
 
 
@@ -323,5 +350,5 @@ function getInfo(){
 //$_SESSION['throws'] == saving throw proficencies (array of strings)
 //$_SESSION['hitdice'] ==  1dsomething
 //$_SESSION['subclass'] == subclass name
-//$_SESSION['stat'] == [str, dex, con, int, wis, cha]
+//$_SESSION['Stats'] == [str, dex, con, int, wis, cha]
 ?>
