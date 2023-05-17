@@ -44,7 +44,7 @@ require 'builderFunctions.php';
             <label for='Wisdom'>Wisdom:</label>
             <input type='number' id='Wisdom' name='Wisdom' min='1' max='20' value = 10>
             <label for='Charisma'>Charisma:</label>
-            <input type='Charisma' id='Charisma' name='Charisma' min='1' max='20' value = 10>
+            <input type='number' id='Charisma' name='Charisma' min='1' max='20' value = 10>
             <input type='hidden' name='hidden' value='stats'>
             <input type='submit' name='Submit' id='Submit'>
         </form>

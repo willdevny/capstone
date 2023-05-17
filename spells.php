@@ -4,6 +4,7 @@ require 'spellbooks.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,102 +15,104 @@ require 'spellbooks.php';
     <link rel="stylesheet" href="../style.css">
     <title>Document</title>
 </head>
+
 <body>
-<div>
-    <?php 
-        $cantrips = 0;
-        $Spells = 0;
+    <header>
+        <div class="horizontal-container else-nav nav">
+            <!-- Open Menu For Profile Options -->
+            <a href="main.php">
+                <ion-icon class="else-profile-button" name="home"></ion-icon>
+            </a>
+        </div>
+    </header>
+    <article id="builder">
 
-        if($_SESSION['class'] == 'Bard'){
-            $cantrips = '2';
-            $Spells = '4';
-        }
-        else if($_SESSION['class'] == 'Cleric'){
-            $cantrips = '3';
-            $Spells = '2';
-        }
-        else if($_SESSION['class'] == 'Druid'){
-            $cantrips = '2';
-            $Spells = '2';
-        }
-        else if($_SESSION['class'] == 'Sorcerer'){
-            $cantrips = '4';
-            $Spells = '2';
-        }
-        else if($_SESSION['class'] == 'Warlock'){
-            $cantrips = '2';
-            $Spells = '2';
-        }
-        else if($_SESSION['class'] == 'Wizard'){
-            $cantrips = '3';
-            $Spells = '6';
-        }
+        <div>
+            <?php
+            $cantrips = 0;
+            $Spells = 0;
 
-        echo 'Pick '.$cantrips.' cantrips and '.$Spells.' 1st level spells.'
-    ?>
-</div>
+            if ($_SESSION['class'] == 'Bard') {
+                $cantrips = '2';
+                $Spells = '4';
+            } else if ($_SESSION['class'] == 'Cleric') {
+                $cantrips = '3';
+                $Spells = '2';
+            } else if ($_SESSION['class'] == 'Druid') {
+                $cantrips = '2';
+                $Spells = '2';
+            } else if ($_SESSION['class'] == 'Sorcerer') {
+                $cantrips = '4';
+                $Spells = '2';
+            } else if ($_SESSION['class'] == 'Warlock') {
+                $cantrips = '2';
+                $Spells = '2';
+            } else if ($_SESSION['class'] == 'Wizard') {
+                $cantrips = '3';
+                $Spells = '6';
+            }
 
-<div>
-    <form method="POST" id="Spells">
-        <input type="hidden" name="hidden" value="Spells" form="Spells">
-        <input type="Submit" name="Submit" value="Submit" form="Spells">
-        <table>
-                <tr>
-                    <th>Level</th>
-                    <th>Spell Name</th>
-                    <th>School</th>
-                    <th>Casting Time</th>
-                    <th>Range</th>
-                    <th>Duration</th>
-                    <th>Components</th>
-                    <th></th>
-                </tr>
-                <?php
+            echo 'Pick ' . $cantrips . ' cantrips and ' . $Spells . ' 1st level spells.'
+            ?>
+        </div>
+
+        <div>
+            <form method="POST" id="Spells">
+                <input type="hidden" name="hidden" value="Spells" form="Spells">
+                <input type="Submit" name="Submit" value="Submit" form="Spells">
+                <table>
+                    <tr>
+                        <th>Level</th>
+                        <th>Spell Name</th>
+                        <th>School</th>
+                        <th>Casting Time</th>
+                        <th>Range</th>
+                        <th>Duration</th>
+                        <th>Components</th>
+                        <th></th>
+                    </tr>
+                    <?php
                     $Spells = [];
 
-                    if($_SESSION['class'] == 'Bard'){
+                    if ($_SESSION['class'] == 'Bard') {
                         $Spells = $bardSpells;
-                    }
-                    else if($_SESSION['class'] == 'Cleric'){
+                    } else if ($_SESSION['class'] == 'Cleric') {
                         $Spells = $clericSpells;
-                    }
-                    else if($_SESSION['class'] == 'Druid'){
+                    } else if ($_SESSION['class'] == 'Druid') {
                         $Spells = $druidSpells;
-                    }
-                    else if($_SESSION['class'] == 'Sorcerer'){
+                    } else if ($_SESSION['class'] == 'Sorcerer') {
                         $Spells = $sorcererSpells;
-                    }
-                    else if($_SESSION['class'] == 'Warlock'){
+                    } else if ($_SESSION['class'] == 'Warlock') {
                         $Spells = $warlockSpells;
-                    }
-                    else if($_SESSION['class'] == 'Wizard'){
+                    } else if ($_SESSION['class'] == 'Wizard') {
                         $Spells = $wizardSpells;
                     }
-                    for($x = 0; $x < count($Spells); $x++){
+                    for ($x = 0; $x < count($Spells); $x++) {
                         $canOrLev = $Spells[$x][0];
 
-                        $level = "<td>".$Spells[$x][0]."<td>";
-                        $name = "<td>".$Spells[$x][1]."<td>";
-                        $school = "<td>".$Spells[$x][2]."<td>";
-                        $casttime = "<td>".$Spells[$x][3]."<td>";
-                        $range = "<td>".$Spells[$x][4]."<td>";
-                        $duration = "<td>".$Spells[$x][5]."<td>";
-                        $components = "<td>".$Spells[$x][6]."<td>";
+                        $level = "<td>" . $Spells[$x][0] . "<td>";
+                        $name = "<td>" . $Spells[$x][1] . "<td>";
+                        $school = "<td>" . $Spells[$x][2] . "<td>";
+                        $casttime = "<td>" . $Spells[$x][3] . "<td>";
+                        $range = "<td>" . $Spells[$x][4] . "<td>";
+                        $duration = "<td>" . $Spells[$x][5] . "<td>";
+                        $components = "<td>" . $Spells[$x][6] . "<td>";
 
 
-                        if($canOrLev == 'Cantrip'){
-                            $button = "<td><input type='checkbox' name='cantripList[]' value='".$Spells[$x][1]."' form='Spells'></td>";
+                        if ($canOrLev == 'Cantrip') {
+                            $button = "<td><input type='checkbox' name='cantripList[]' value='" . $Spells[$x][1] . "' form='Spells'></td>";
+                        } else {
+                            $button = "<td><input type='checkbox' name='spellList[]' value='" . $Spells[$x][1] . "' form='Spells'></td>";
                         }
-                        else{
-                            $button = "<td><input type='checkbox' name='spellList[]' value='".$Spells[$x][1]."' form='Spells'></td>";
-                        }
-                        echo "<tr>".$level.$name.$school.$casttime.$range.$duration.$components.$button."</tr>";
+                        echo "<tr>" . $level . $name . $school . $casttime . $range . $duration . $components . $button . "</tr>";
                     };
-                ?>
-        </table>
-    </form>
-</div>
+                    ?>
+                </table>
+            </form>
+        </div>
+    </article>
 </body>
 <script type="text/javascript">
 </script>
+
 </html>
