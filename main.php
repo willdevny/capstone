@@ -21,7 +21,7 @@
         <article id="landing-page" class="horizontal-container flex-center justify-center">
             <div class="horizontal-container flex-center justify-center">
                 <div class="left-directory-icon directory-icon">
-                    <a class="directory-link to-builder" href="characterBuilder/race.php">
+                    <a class="directory-link to-builder" href="race.php">
                         <ion-icon name="person-add-outline"></ion-icon>
                     </a>
                     <p class="hide hide-builder">Builder</p>

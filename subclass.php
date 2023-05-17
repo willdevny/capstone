@@ -10,9 +10,19 @@ require 'builderFunctions.php';
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.css" integrity="sha512-0nkKORjFgcyxv3HbE4rzFUlENUMNqic/EzDIeYCgsKa/nwqr2B91Vu/tNAu4Q0cBuG4Xe/D1f/freEci/7GDRA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../style.css">
     <title>Document</title>
 </head>
+<header>
+		<div class="horizontal-container else-nav nav">
+			<!-- Open Menu For Profile Options -->
+			<a href="main.php">
+				<ion-icon class="else-profile-button" name="home"></ion-icon>
+			</a>
+		</div>
+	</header>
 <body>
+<article id="builder">
     <form method='POST' name='sub' id='sub'>
     <label for="sub">Choose a subclass:</label>
         <select name="subclass" id="subclass" onchange="getSub()">
@@ -44,6 +54,9 @@ require 'builderFunctions.php';
         <br>
         <br>
         <div name="description" id="description"></div>
+            </article>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 <script type="text/javascript">
     function getSub(){
