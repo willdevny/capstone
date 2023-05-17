@@ -16,10 +16,12 @@ if (!isset($_SESSION))
 
 <body>
 <header>
-		<div class="horizontal-container else-nav nav">
-			<!-- Open Menu For Profile Options -->
-			<ion-icon class="else-profile-button" name="person-circle-outline"></ion-icon>
-		</div>
+	<div class="horizontal-container else-nav nav">
+		<!-- Open Menu For Profile Options -->
+		<a href="main.php">
+			<ion-icon class="else-profile-button" name="home"></ion-icon>
+		</a>
+	</div>
 	</header>
 	<article id="sheet">
 		<div class="horizontal-container flex-between">
@@ -430,7 +432,7 @@ if (!isset($_SESSION))
 			</div>
 			<div id="featAndTrait" class="vertical-container">
 				<label for="featAndTrait" class="section-head">Feats and Traits</label>
-				<input type="text" name="featAndTrait" id="featAndTraitInput" class="feat-box half-spacing">
+				<textarea type="text" name="featAndTrait" id="featAndTraitInput" class="feat-box half-spacing"></textarea>
 			</div>
 			<div id="attacks" class="vertical-container">
 				<p class="section-head">Attacks</p>
@@ -1171,7 +1173,4 @@ if (!isset($_SESSION))
 <?php
 require 'character-sheet.php';
 ?>
-
 </html>
-message.txt
-47 KB

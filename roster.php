@@ -12,7 +12,7 @@
 <script>
 	function createRoster(row, name) {
 		let characterHTML = `
-		<div onclick=print(`+row+`)>
+		<div onclick=print(`+row+`) style='cursor:pointer;'>
 			<input type="text" id='` + row + `' value=` + row + ` hidden>
 			<p>` + name + `<p>
 		</div>`
@@ -27,16 +27,17 @@
 <?php
 	if (isset($_SESSION['Id'])) {
 		$query = pg_query_params($db_connection, "SELECT characterid, character FROM characters WHERE userid = $1;", array($_SESSION['Id']));
-		$data = pg_fetch_row($query);
-		for ($i = 0; $i < count($data); $i+=2) {
+		$data = pg_fetch_all($query, $mode = PGSQL_NUM);
+		foreach ($data as $row) {
+			echo("<script>console.log('$row[0]')</script>");
 
-			$character = str_replace("%22", '"', $data[$i + 1]);
+			$character = str_replace("%22", '"', $row[1]);
 
 			$startName = strpos($character, "characterName") + 16;
 			$endName = strpos($character, '","characterRace') - $startName;
 			$characterName = substr($character, $startName, $endName);
 
-			echo("<script>createRoster('$data[$i]', '$characterName')</script>");
+			echo("<script>createRoster('$row[0]', '$characterName')</script>");
 		}
 	}
 ?>

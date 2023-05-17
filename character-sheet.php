@@ -5,12 +5,20 @@ $db_connection = pg_connect("host=localhost dbname=postgres user=macowner passwo
 
 if (isset($_POST['json_data'])) {
 	$character = $_POST['json_data'];
-	
-	$query = pg_query_params($db_connection, "INSERT INTO characters (userid, character) VALUES ($1, $2)", array($_SESSION['Id'], $character));
+
+	if (isset($_GET['id'])) {
+		$query = pg_query_params($db_connection, "UPDATE characters SET character = $1 WHERE characterid = $2", array($character, $_GET['id']));
+	} else {
+		$query = pg_query_params($db_connection, "INSERT INTO characters (userid, character) VALUES ($1, $2)", array($_SESSION['Id'], $character));
+	}
+
 	header("Location:roster.view.php");
 }
 ?>
 <script>
+
+	$("#new_character").val(false)
+
 	let playerRace = "";
 	let playerClass = "";
 	let dynamicRendering = true;
@@ -630,6 +638,16 @@ if (isset($_POST['json_data'])) {
 			$(":input").prop("disabled", false);
 		}
 	}
+
+	function builderChararcter(job, race, skills, equipment, gold, cantrips, spells, raceFeats, speed, size, languages, HP, profs, classFeats, throws, hitdice, subclass) {
+		// $("#classSelection").val(job)
+		// $("#raceSelection").val(race)
+
+		// $("#equipmentInput").val(equipment)
+		// $(":input[name='gp']").val(gold)
+
+
+	}
 </script>
 <?php
 if (!isset($_SESSION['Id'])) {
@@ -646,5 +664,13 @@ if (isset($_GET['id'])) {
 	$character = str_replace("%7D", '}', $character);
 
 	echo("<script>fillInputs($character);</script>");	
+}
+
+if (isset($_GET['builder'])) {
+	$spells = $_SESSION['spells'];
+	foreach ($spells as $spell) {
+		echo(" <script>console.log('$spell');</script>");
+	}
+	echo("<script>builderChararcter('".$_SESSION['class']."', '".$_SESSION['race']."', ".$_SESSION['skills'].", ".$_SESSION['equipment'].", '".$_SESSION['gold']."', ".$_SESSION['cantrips'].", ".$_SESSION['spells'].", ".$_SESSION['raceFeats'].", ".$_SESSION['speed'].", '".$_SESSION['size']."', ".$_SESSION['languages'].", ".$_SESSION['HP'].", ".$_SESSION['profs'].", ".$_SESSION['classFeats'].", ".$_SESSION['throws'].", '".$_SESSION['hitdice']."', '".$_SESSION['subclass']."')</script>");	
 }
 ?>

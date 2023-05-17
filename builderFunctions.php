@@ -43,7 +43,7 @@ if(isset($_POST['Submit'])){
             }
             else{
                 getInfo();
-                header("Location: character-sheet.php");
+                header("Location: character-sheet.view.php?builder=true");
             }
         }
     }
@@ -57,7 +57,7 @@ if(isset($_POST['Submit'])){
         }
         else if($_SESSION['class'] == 'Cleric'){
             $cantrips = '3';
-            $cantrips = '2';
+            $Spells = '2';
         }
         else if($_SESSION['class'] == 'Druid'){
             $cantrips = '2';
@@ -81,12 +81,13 @@ if(isset($_POST['Submit'])){
                 if(isset($_POST['spellList'])){
                     if(count($_POST['spellList']) == $Spells){
                         $_SESSION['spells'] == $_POST['spellList'];
+                        echo("<script>console.log('".$_SESSION['spells'][0]."');</script>");
                         if($_SESSION['class'] == 'Cleric' || $_SESSION['class'] == 'Sorcerer' || $_SESSION['class'] == 'Warlock'){
-                            header("Location: subclass.php");
+                            // header("Location: subclass.php");
                         }
                         else if($_SESSION['class'] == 'Cleric' || 'Sorcerer' || 'Warlock'){
                             getInfo();
-                            header("Location: character-sheet.php");
+                            // header("Location: character-sheet.view.php?builder=true");
                         }
                     }
                 }
@@ -96,7 +97,7 @@ if(isset($_POST['Submit'])){
     else if($_POST['hidden'] == "subclass"){
         $_SESSION['subclass'] = $_POST['subclass'];
         getInfo();
-        header("Location: character-sheet.php");
+        header("Location: character-sheet.view.php?builder=true");
     }
 }
 else{
