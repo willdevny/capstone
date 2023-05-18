@@ -38,13 +38,10 @@ if (!isset($_SESSION['Id'])) {
 		<input type="submit" id="logoutBtn" name="logoutBtn" hidden>
 	</form>
 	<button onclick=editAccount() id="editButton">Edit<ion-icon name="cog"></ion-icon></button>
-<<<<<<< HEAD
 	</div>
-=======
 	<form action="accounts.view.php" method="post">
 		<input type="submit" name="logoutBtn" value="Log Out"></input>
 	</form>
->>>>>>> 9066e8593006b6ff1e56d4e7a9ace65087bba1ca
 
 	</article>
 	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

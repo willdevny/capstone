@@ -15,18 +15,19 @@ if (!isset($_SESSION))
 </head>
 
 <body>
-<header>
+	<header>
 		<div class="horizontal-container else-nav nav">
 			<!-- Open Menu For Profile Options -->
-			<ion-icon class="else-profile-button" name="person-circle-outline"></ion-icon>
+			<a href="main.php">
+				<ion-icon class="else-profile-button" name="home"></ion-icon>
+			</a>
 		</div>
 	</header>
 	<article id="sheet">
 		<div class="horizontal-container flex-between">
 			<div id="dynamicRender">
 				<input type="checkbox" name="dynamicCheckbox" id="dynamicCheckbox" checked>
-				<label for="dynamicCheckbox"
-					title="If Dynamic Rendering is turned one, the character sheet will fill in certian inputs based on previous information you've inputted. Ex. Speed, Hit Points, Hit Dice">Dynamic
+				<label for="dynamicCheckbox" title="If Dynamic Rendering is turned one, the character sheet will fill in certian inputs based on previous information you've inputted. Ex. Speed, Hit Points, Hit Dice">Dynamic
 					Rendering</label>
 			</div>
 			<div id="edit">
@@ -401,7 +402,7 @@ if (!isset($_SESSION))
 				<label for="equipment" class="section-head">Equipment</label>
 				<textarea name="equipment" id="equipmentInput" class="equipment-box half-spacing"></textarea>
 				<div id="money" class="vertical-container half-spacing">
-				<label class="section-head">Money</label>
+					<label class="section-head">Money</label>
 					<div class="horizontal-container flex-around half-spacing">
 						<div>
 							<label for="pp">PP</label>
@@ -430,7 +431,7 @@ if (!isset($_SESSION))
 			</div>
 			<div id="featAndTrait" class="vertical-container">
 				<label for="featAndTrait" class="section-head">Feats and Traits</label>
-				<input type="text" name="featAndTrait" id="featAndTraitInput" class="feat-box half-spacing">
+				<textarea type="text" name="featAndTrait" id="featAndTraitInput" class="feat-box half-spacing"></textarea>
 			</div>
 			<div id="attacks" class="vertical-container">
 				<p class="section-head">Attacks</p>
@@ -470,7 +471,7 @@ if (!isset($_SESSION))
 		<div id="spellSheet" class="vertical-container section-spacing">
 			<p class="section-head">Spellcasting</p>
 			<div id="casterInfo" class="horizontal-container flex-between spacing">
-			<div id="cantrips">
+				<div id="cantrips">
 					<table>
 						<tr>
 							<td>
@@ -507,20 +508,20 @@ if (!isset($_SESSION))
 					</table>
 				</div>
 				<div>
-				<label for="spellClass" class="section-subhead">Spellcasting Class</label>
-				<input type="text" name="spellClass" class="casterInfoInput square">
+					<label for="spellClass" class="section-subhead">Spellcasting Class</label>
+					<input type="text" name="spellClass" class="casterInfoInput square">
 				</div>
 				<div>
-				<label for="spellAbility" class="section-subhead">Spellcasting Ability</label>
-				<input type="number" name="spellAbility" class="casterInfoInput square">
+					<label for="spellAbility" class="section-subhead">Spellcasting Ability</label>
+					<input type="number" name="spellAbility" class="casterInfoInput square">
 				</div>
 				<div>
-				<label for="spellSave" class="section-subhead">Spell Save DC</label>
-				<input type="number" name="spellSave" class="casterInfoInput square">
+					<label for="spellSave" class="section-subhead">Spell Save DC</label>
+					<input type="number" name="spellSave" class="casterInfoInput square">
 				</div>
 				<div>
-				<label for="spellAttack" class="section-subhead">Spell Attack Bonus</label>
-				<input type="number" name="spellAttack" class="casterInfoInput square">
+					<label for="spellAttack" class="section-subhead">Spell Attack Bonus</label>
+					<input type="number" name="spellAttack" class="casterInfoInput square">
 				</div>
 			</div>
 			<div id="spells" class="spell-section spacing">
@@ -1173,5 +1174,3 @@ require 'character-sheet.php';
 ?>
 
 </html>
-message.txt
-47 KB
