@@ -15,18 +15,19 @@ if (!isset($_SESSION))
 </head>
 
 <body>
-<header>
+	<header>
 		<div class="horizontal-container else-nav nav">
 			<!-- Open Menu For Profile Options -->
-			<ion-icon class="else-profile-button" name="person-circle-outline"></ion-icon>
+			<a href="main.php">
+				<ion-icon class="else-profile-button" name="home"></ion-icon>
+			</a>
 		</div>
 	</header>
 	<article id="sheet">
 		<div class="horizontal-container flex-between">
 			<div id="dynamicRender">
 				<input type="checkbox" name="dynamicCheckbox" id="dynamicCheckbox" checked>
-				<label for="dynamicCheckbox"
-					title="If Dynamic Rendering is turned one, the character sheet will fill in certian inputs based on previous information you've inputted. Ex. Speed, Hit Points, Hit Dice">Dynamic
+				<label for="dynamicCheckbox" title="If Dynamic Rendering is turned one, the character sheet will fill in certian inputs based on previous information you've inputted. Ex. Speed, Hit Points, Hit Dice">Dynamic
 					Rendering</label>
 			</div>
 			<div id="edit">
@@ -51,21 +52,21 @@ if (!isset($_SESSION))
 				<label for="characterRace" class="section-head">Race</label>
 				<select name="characterRace" id="raceSelection">
 					<option value="" disabled selected>Choose a race</option>
-					<option value="hilldwarf">Hill Dwarf</option>
-					<option value="mountaindwarf">Mountain Dwarf</option>
-					<option value="darkelf">Dark Elf</option>
-					<option value="highelf">High Elf</option>
-					<option value="woodelf">Wood Elf</option>
-					<option value="stouthalfling">Stout Halfling</option>
-					<option value="lightfoothalfling">Lightfoot Halfling</option>
+					<option value="hill-dwarf">Hill Dwarf</option>
+					<option value="mountain-dwarf">Mountain Dwarf</option>
+					<option value="dark-elf">Dark Elf</option>
+					<option value="high-elf">High Elf</option>
+					<option value="wood-elf">Wood Elf</option>
+					<option value="stout-halfling">Stout Halfling</option>
+					<option value="lightfoot-halfling">Lightfoot Halfling</option>
 					<option value="human">Human</option>
-					<option value="varianthuman">Variant Human</option>
+					<option value="variant-human">Variant Human</option>
 					<option value="dragonborn">Dragonborn</option>
-					<option value="forestgnome">Forest Gnome</option>
-					<option value="rockgnome">Rock Gnome</option>
-					<option value="halfelf">Half-Elf</option>
-					<option value="halforc">Half-Orc</option>
-					<option value="tiefling">Tiefling</option>
+					<option value="forest-gnome">Forest Gnome</option>
+					<option value="rock-gnome">Rock Gnome</option>
+					<option value="half-elf">Half-Elf</option>
+					<option value="half-orc">Half-Orc</option>
+					<option value="asmodeus-tiefling">Tiefling</option>
 				</select>
 			</div>
 			<div class="vertical-container crc-spacing">
@@ -210,18 +211,18 @@ if (!isset($_SESSION))
 					<input type="checkbox" name="inspiration" id="inspirationInput">
 				</div>
 				<p class="section-head spacing">Proficiencies and Languages</p>
-				<div class="horizontal-container flex-between">
+				<!-- <div class="horizontal-container flex-between">
 					<label for="armorProf">Armor:</label>
 					<input type="text" name="armorProf" id="armorProf" class="rectangle">
-				</div>
+				</div> -->
 				<div class="horizontal-container flex-between">
-					<label for="weaponProf">Weapons:</label>
+					<label for="weaponProf">Proficiencies:</label>
 					<input type="text" name="weaponProf" id="weaponProf" class="rectangle">
 				</div>
-				<div class="horizontal-container flex-between">
+				<!-- <div class="horizontal-container flex-between">
 					<label for="toolProf">Tools:</label>
 					<input type="text" name="toolProf" id="toolProf" class="rectangle">
-				</div>
+				</div> -->
 				<div class="horizontal-container flex-between">
 					<label for="langProf">Languages:</label>
 					<input type="text" name="langProf" id="langProf" class="rectangle">
@@ -401,7 +402,7 @@ if (!isset($_SESSION))
 				<label for="equipment" class="section-head">Equipment</label>
 				<textarea name="equipment" id="equipmentInput" class="equipment-box half-spacing"></textarea>
 				<div id="money" class="vertical-container half-spacing">
-				<label class="section-head">Money</label>
+					<label class="section-head">Money</label>
 					<div class="horizontal-container flex-around half-spacing">
 						<div>
 							<label for="pp">PP</label>
@@ -430,7 +431,7 @@ if (!isset($_SESSION))
 			</div>
 			<div id="featAndTrait" class="vertical-container">
 				<label for="featAndTrait" class="section-head">Feats and Traits</label>
-				<input type="text" name="featAndTrait" id="featAndTraitInput" class="feat-box half-spacing">
+				<textarea type="text" name="featAndTrait" id="featAndTraitInput" class="feat-box half-spacing"></textarea>
 			</div>
 			<div id="attacks" class="vertical-container">
 				<p class="section-head">Attacks</p>
@@ -470,7 +471,7 @@ if (!isset($_SESSION))
 		<div id="spellSheet" class="vertical-container section-spacing">
 			<p class="section-head">Spellcasting</p>
 			<div id="casterInfo" class="horizontal-container flex-between spacing">
-			<div id="cantrips">
+				<div id="cantrips">
 					<table>
 						<tr>
 							<td>
@@ -481,46 +482,46 @@ if (!isset($_SESSION))
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" name="cantripOne" class="spellInput"></td>
+							<td colspan="2"><input type="text" name="cantrip1" class="spellInput"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" name="cantripTwo" class="spellInput"></td>
+							<td colspan="2"><input type="text" name="cantrip2" class="spellInput"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" name="cantripThree" class="spellInput"></td>
+							<td colspan="2"><input type="text" name="cantrip3" class="spellInput"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" name="cantripFour" class="spellInput"></td>
+							<td colspan="2"><input type="text" name="cantrip4" class="spellInput"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" name="cantripFive" class="spellInput"></td>
+							<td colspan="2"><input type="text" name="cantrip5" class="spellInput"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" name="cantripSix" class="spellInput"></td>
+							<td colspan="2"><input type="text" name="cantrip6" class="spellInput"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" name="cantripSeven" class="spellInput"></td>
+							<td colspan="2"><input type="text" name="cantrip7" class="spellInput"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" name="cantripEight" class="spellInput"></td>
+							<td colspan="2"><input type="text" name="cantrip8" class="spellInput"></td>
 						</tr>
 					</table>
 				</div>
 				<div>
-				<label for="spellClass" class="section-subhead">Spellcasting Class</label>
-				<input type="text" name="spellClass" class="casterInfoInput square">
+					<label for="spellClass" class="section-subhead">Spellcasting Class</label>
+					<input type="text" name="spellClass" class="casterInfoInput square">
 				</div>
 				<div>
-				<label for="spellAbility" class="section-subhead">Spellcasting Ability</label>
-				<input type="number" name="spellAbility" class="casterInfoInput square">
+					<label for="spellAbility" class="section-subhead">Spellcasting Ability</label>
+					<input type="number" name="spellAbility" class="casterInfoInput square">
 				</div>
 				<div>
-				<label for="spellSave" class="section-subhead">Spell Save DC</label>
-				<input type="number" name="spellSave" class="casterInfoInput square">
+					<label for="spellSave" class="section-subhead">Spell Save DC</label>
+					<input type="number" name="spellSave" class="casterInfoInput square">
 				</div>
 				<div>
-				<label for="spellAttack" class="section-subhead">Spell Attack Bonus</label>
-				<input type="number" name="spellAttack" class="casterInfoInput square">
+					<label for="spellAttack" class="section-subhead">Spell Attack Bonus</label>
+					<input type="number" name="spellAttack" class="casterInfoInput square">
 				</div>
 			</div>
 			<div id="spells" class="spell-section spacing">
@@ -554,51 +555,51 @@ if (!isset($_SESSION))
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelOneSpellOne" class="spellName"></td>
+							<td><input type="text" name="levelOneSpell1" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelOneSpellTwo" class="spellName"></td>
+							<td><input type="text" name="levelOneSpell2" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelOneSpellThree" class="spellName"></td>
+							<td><input type="text" name="levelOneSpell3" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelOneSpellFour" class="spellName"></td>
+							<td><input type="text" name="levelOneSpell4" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelOneSpellFive" class="spellName"></td>
+							<td><input type="text" name="levelOneSpell5" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelOneSpellSix" class="spellName"></td>
+							<td><input type="text" name="levelOneSpell6" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelOneSpellSeven" class="spellName"></td>
+							<td><input type="text" name="levelOneSpell7" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelOneSpellEight" class="spellName"></td>
+							<td><input type="text" name="levelOneSpell8" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelOneSpellNine" class="spellName"></td>
+							<td><input type="text" name="levelOneSpell9" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelOneSpellTen" class="spellName"></td>
+							<td><input type="text" name="levelOneSpell10" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelOneSpellEleven" class="spellName"></td>
+							<td><input type="text" name="levelOneSpell11" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelOneSpellTwelve" class="spellName"></td>
+							<td><input type="text" name="levelOneSpell12" class="spellName"></td>
 						</tr>
 					</table>
 				</div>
@@ -632,55 +633,55 @@ if (!isset($_SESSION))
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelTwoSpellOne" class="spellName"></td>
+							<td><input type="text" name="levelTwoSpell1" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelTwoSpellTwo" class="spellName"></td>
+							<td><input type="text" name="levelTwoSpell2" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelTwoSpellThree" class="spellName"></td>
+							<td><input type="text" name="levelTwoSpell3" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelTwoSpellFour" class="spellName"></td>
+							<td><input type="text" name="levelTwoSpell4" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelTwoSpellFive" class="spellName"></td>
+							<td><input type="text" name="levelTwoSpell5" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelTwoSpellSix" class="spellName"></td>
+							<td><input type="text" name="levelTwoSpell6" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelTwoSpellSeven" class="spellName"></td>
+							<td><input type="text" name="levelTwoSpell7" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelTwoSpellEight" class="spellName"></td>
+							<td><input type="text" name="levelTwoSpell8" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelTwoSpellNine" class="spellName"></td>
+							<td><input type="text" name="levelTwoSpell9" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelTwoSpellTen" class="spellName"></td>
+							<td><input type="text" name="levelTwoSpell10" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelTwoSpellEleven" class="spellName"></td>
+							<td><input type="text" name="levelTwoSpell11" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelTwoSpellTwelve" class="spellName"></td>
+							<td><input type="text" name="levelTwoSpell12" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelTwoSpellThirteen" class="spellName"></td>
+							<td><input type="text" name="levelTwoSpell13" class="spellName"></td>
 						</tr>
 					</table>
 				</div>
@@ -714,55 +715,55 @@ if (!isset($_SESSION))
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelThreeSpellOne" class="spellName"></td>
+							<td><input type="text" name="levelThreeSpell1" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelThreeSpellTwo" class="spellName"></td>
+							<td><input type="text" name="levelThreeSpell2" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelThreeSpellThree" class="spellName"></td>
+							<td><input type="text" name="levelThreeSpell3" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelThreeSpellFour" class="spellName"></td>
+							<td><input type="text" name="levelThreeSpell4" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelThreeSpellFive" class="spellName"></td>
+							<td><input type="text" name="levelThreeSpell5" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelThreeSpellSix" class="spellName"></td>
+							<td><input type="text" name="levelThreeSpell6" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelThreeSpellSeven" class="spellName"></td>
+							<td><input type="text" name="levelThreeSpell7" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelThreeSpellEight" class="spellName"></td>
+							<td><input type="text" name="levelThreeSpell8" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelThreeSpellNine" class="spellName"></td>
+							<td><input type="text" name="levelThreeSpell9" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelThreeSpellTen" class="spellName"></td>
+							<td><input type="text" name="levelThreeSpell10" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelThreeSpellEleven" class="spellName"></td>
+							<td><input type="text" name="levelThreeSpell11" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelThreeSpellTwelve" class="spellName"></td>
+							<td><input type="text" name="levelThreeSpell12" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelThreeSpellThirteen" class="spellName"></td>
+							<td><input type="text" name="levelThreeSpell13" class="spellName"></td>
 						</tr>
 					</table>
 				</div>
@@ -796,55 +797,55 @@ if (!isset($_SESSION))
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFourSpellOne" class="spellName"></td>
+							<td><input type="text" name="levelFourSpell1" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFourSpellTwo" class="spellName"></td>
+							<td><input type="text" name="levelFourSpell2" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFourSpellThree" class="spellName"></td>
+							<td><input type="text" name="levelFourSpell3" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFourSpellFour" class="spellName"></td>
+							<td><input type="text" name="levelFourSpell4" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFourSpellFive" class="spellName"></td>
+							<td><input type="text" name="levelFourSpell5" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFourSpellSix" class="spellName"></td>
+							<td><input type="text" name="levelFourSpell6" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFourSpellSeven" class="spellName"></td>
+							<td><input type="text" name="levelFourSpell7" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFourSpellEight" class="spellName"></td>
+							<td><input type="text" name="levelFourSpell8" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFourSpellNine" class="spellName"></td>
+							<td><input type="text" name="levelFourSpell9" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFourSpellTen" class="spellName"></td>
+							<td><input type="text" name="levelFourSpell10" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFourSpellEleven" class="spellName"></td>
+							<td><input type="text" name="levelFourSpell11" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFourSpellTwelve" class="spellName"></td>
+							<td><input type="text" name="levelFourSpell12" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFourSpellThirteen" class="spellName"></td>
+							<td><input type="text" name="levelFourSpell13" class="spellName"></td>
 						</tr>
 					</table>
 				</div>
@@ -878,39 +879,39 @@ if (!isset($_SESSION))
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFiveSpellOne" class="spellName"></td>
+							<td><input type="text" name="levelFiveSpell1" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFiveSpellTwo" class="spellName"></td>
+							<td><input type="text" name="levelFiveSpell2" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFiveSpellThree" class="spellName"></td>
+							<td><input type="text" name="levelFiveSpell3" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFiveSpellFour" class="spellName"></td>
+							<td><input type="text" name="levelFiveSpell4" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFiveSpellFive" class="spellName"></td>
+							<td><input type="text" name="levelFiveSpell5" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFiveSpellSix" class="spellName"></td>
+							<td><input type="text" name="levelFiveSpell6" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFiveSpellSeven" class="spellName"></td>
+							<td><input type="text" name="levelFiveSpell7" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFiveSpellEight" class="spellName"></td>
+							<td><input type="text" name="levelFiveSpell8" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelFiveSpellNine" class="spellName"></td>
+							<td><input type="text" name="levelFiveSpell9" class="spellName"></td>
 						</tr>
 					</table>
 				</div>
@@ -944,39 +945,39 @@ if (!isset($_SESSION))
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSixSpellOne" class="spellName"></td>
+							<td><input type="text" name="levelSixSpell1" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSixSpellTwo" class="spellName"></td>
+							<td><input type="text" name="levelSixSpell2" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSixSpellThree" class="spellName"></td>
+							<td><input type="text" name="levelSixSpell3" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSixSpellFour" class="spellName"></td>
+							<td><input type="text" name="levelSixSpell4" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSixSpellFive" class="spellName"></td>
+							<td><input type="text" name="levelSixSpell5" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSixSpellSix" class="spellName"></td>
+							<td><input type="text" name="levelSixSpell6" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSixSpellSeven" class="spellName"></td>
+							<td><input type="text" name="levelSixSpell7" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSixSpellEight" class="spellName"></td>
+							<td><input type="text" name="levelSixSpell8" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSixSpellNine" class="spellName"></td>
+							<td><input type="text" name="levelSixSpell9" class="spellName"></td>
 						</tr>
 					</table>
 				</div>
@@ -1010,39 +1011,39 @@ if (!isset($_SESSION))
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSevenSpellOne" class="spellName"></td>
+							<td><input type="text" name="levelSevenSpell1" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSevenSpellTwo" class="spellName"></td>
+							<td><input type="text" name="levelSevenSpell2" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSevenSpellThree" class="spellName"></td>
+							<td><input type="text" name="levelSevenSpell3" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSevenSpellFour" class="spellName"></td>
+							<td><input type="text" name="levelSevenSpell4" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSevenSpellFive" class="spellName"></td>
+							<td><input type="text" name="levelSevenSpell5" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSevenSpellSix" class="spellName"></td>
+							<td><input type="text" name="levelSevenSpell6" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSevenSpellSeven" class="spellName"></td>
+							<td><input type="text" name="levelSevenSpell7" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSevenSpellEight" class="spellName"></td>
+							<td><input type="text" name="levelSevenSpell8" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelSevenSpellNine" class="spellName"></td>
+							<td><input type="text" name="levelSevenSpell9" class="spellName"></td>
 						</tr>
 					</table>
 				</div>
@@ -1076,31 +1077,31 @@ if (!isset($_SESSION))
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelEightSpellOne" class="spellName"></td>
+							<td><input type="text" name="levelEightSpell1" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelEightSpellTwo" class="spellName"></td>
+							<td><input type="text" name="levelEightSpell2" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelEightSpellThree" class="spellName"></td>
+							<td><input type="text" name="levelEightSpell3" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelEightSpellFour" class="spellName"></td>
+							<td><input type="text" name="levelEightSpell4" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelEightSpellFive" class="spellName"></td>
+							<td><input type="text" name="levelEightSpell5" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelEightSpellSix" class="spellName"></td>
+							<td><input type="text" name="levelEightSpell6" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelEightSpellSeven" class="spellName"></td>
+							<td><input type="text" name="levelEightSpell7" class="spellName"></td>
 						</tr>
 					</table>
 				</div>
@@ -1134,31 +1135,31 @@ if (!isset($_SESSION))
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelNineSpellOne" class="spellName"></td>
+							<td><input type="text" name="levelNineSpell1" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelNineSpellTwo" class="spellName"></td>
+							<td><input type="text" name="levelNineSpell2" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelNineSpellThree" class="spellName"></td>
+							<td><input type="text" name="levelNineSpell3" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelNineSpellFour" class="spellName"></td>
+							<td><input type="text" name="levelNineSpell4" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelNineSpellFive" class="spellName"></td>
+							<td><input type="text" name="levelNineSpell5" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelNineSpellSix" class="spellName"></td>
+							<td><input type="text" name="levelNineSpell6" class="spellName"></td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" name="preparedSpell" class="preparedCheckbox"></td>
-							<td><input type="text" name="levelNineSpellSeven" class="spellName"></td>
+							<td><input type="text" name="levelNineSpell7" class="spellName"></td>
 						</tr>
 					</table>
 				</div>
@@ -1173,5 +1174,3 @@ require 'character-sheet.php';
 ?>
 
 </html>
-message.txt
-47 KB

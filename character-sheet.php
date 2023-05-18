@@ -4,13 +4,17 @@ if (!isset($_SESSION)) session_start();
 $db_connection = pg_connect("host=localhost dbname=postgres user=macowner password=password");
 
 if (isset($_POST['json_data'])) {
-	$character = $_POST['json_data'];
-	
-	$query = pg_query_params($db_connection, "INSERT INTO characters (userid, character) VALUES ($1, $2)", array($_SESSION['Id'], $character));
+	if (isset($_GET['id'])) {
+		$query = pg_query_params($db_connection, "UPDATE characters SET character = $1 WHERE characterid = $2", array($character, $_GET['id']));
+	} else {
+		$query = pg_query_params($db_connection, "INSERT INTO characters (userid, character) VALUES ($1, $2)", array($_SESSION['Id'], $character));
+	}
+
 	header("Location:roster.view.php");
 }
 ?>
 <script>
+	$("#new_character").val(false)
 	let playerRace = "";
 	let playerClass = "";
 	let dynamicRendering = true;
@@ -18,6 +22,7 @@ if (isset($_POST['json_data'])) {
 	$('document').ready(function() {
 
 		if (dynamicRendering == true) {
+			
 			$('#proficiencyInput').val(2);
 
 			$("#importBtn").on('change', function() {
@@ -226,6 +231,7 @@ if (isset($_POST['json_data'])) {
 							$("#intAbility").val(parseInt($("#intAbility").val()) + 1).trigger("change")
 						}
 					}
+					
 				}
 			});
 			$("#classSelection").on('change', function() {
@@ -630,10 +636,67 @@ if (isset($_POST['json_data'])) {
 			$(":input").prop("disabled", false);
 		}
 	}
+
+	function builderChararcter(job, race, skills, equipment, gold, cantrips, spells, raceFeats, speed, size, languages, HP, profs, classFeats, throws, hitdice, subclass, stats) {
+		$('document').ready(function() {
+
+		$("#classSelection").val(job.toLowerCase())
+		$("#raceSelection").val(race.toLowerCase())
+		skills = JSON.parse(skills)
+		equipment = JSON.parse(equipment)
+		cantrips = JSON.parse(cantrips)
+		spells = JSON.parse(spells)
+		raceFeats = JSON.parse(raceFeats)
+		classFeats = JSON.parse(classFeats)
+		languages = JSON.parse(languages)
+		profs = JSON.parse(profs)
+		throws = JSON.parse(throws)
+		stats = JSON.parse(stats)
+
+		for (var i = 0; i < skills.length; i++) {
+			$(":input[name='" + skills[i] + 'Prof' + "']").prop("checked", true).trigger('change')
+		}
+		for (var i = 0; i < equipment.length; i++) {
+			$("#equipmentInput").val($("#equipmentInput").val() + " " + equipment[i]).trigger('change')
+		}
+		$(":input[name='gp']").val(gold)
+		for (var i = 1; i <= cantrips.length; i++) {
+			$(":input[name='cantrip" + i + "']").val(cantrips[i - 1]).trigger('change')
+		}
+		for (var i = 1; i <= spells.length; i++) {
+			$(":input[name='levelOneSpell" + i + "']").val(spells[i - 1]).trigger('change')
+		}
+		for (var i = 0; i < raceFeats.length; i++) {
+			$("#featAndTraitInput").val($("#featAndTraitInput").val() + " " + raceFeats[i]).trigger('change')
+		}
+		$("#speedInput").val(speed).trigger('change')
+		for (var i = 0; i < languages.length; i++) {
+			$("#langProf").val($("#langProf").val() + " " + languages[i]).trigger('change')
+		}
+		$("#maxHPInput").val(HP).trigger('change')
+		for (var i = 0; i < profs.length; i++) {
+			$("#weaponProf").val($("#weaponProf").val() + " " + profs[i]).trigger('change')
+		}
+		for (var i = 0; i < classFeats.length; i++) {
+			$("#featAndTraitInput").val($("#featAndTraitInput").val() + " " + classFeats[i]).trigger('change')
+		}
+		for (var i = 0; i < throws.length; i++) {
+			$(":input[name='" + throws[i].toLowerCase() + 'Prof' + "']").prop("checked", true).trigger('change')
+		}
+		$("#hitDiceInput").val(hitdice).trigger('change')
+		$("#strAbility").val(stats[0]).trigger('change')
+		$("#dexAbility").val(stats[1]).trigger('change')
+		$("#conAbility").val(stats[2]).trigger('change')
+		$("#intAbility").val(stats[3]).trigger('change')
+		$("#intAbility").val(stats[4]).trigger('change')
+		$("#wisAbility").val(stats[5]).trigger('change')
+		$("#chaAbility").val(stats[5]).trigger('change')
+	})
+	}
 </script>
 <?php
 if (!isset($_SESSION['Id'])) {
-	echo("<script>saveToggle()</script>");
+	echo ("<script>saveToggle()</script>");
 }
 
 if (isset($_GET['id'])) {
@@ -645,6 +708,21 @@ if (isset($_GET['id'])) {
 	$character = str_replace("%7B", '{', $character);
 	$character = str_replace("%7D", '}', $character);
 
-	echo("<script>fillInputs($character);</script>");	
+	echo ("<script>fillInputs($character);</script>");
+}
+
+if (isset($_GET['builder'])) {
+	$skills = json_encode($_SESSION['skills']);
+	$equipment = json_encode($_SESSION['equipment']);
+	$cantrips = json_encode($_SESSION['cantrips']);
+	$spells = json_encode($_SESSION['spells']);
+	$raceFeats = json_encode($_SESSION['raceFeats']);
+	$languages = json_encode($_SESSION['languages']);
+	$profs = json_encode($_SESSION['profs']);
+	$classFeats = json_encode($_SESSION['classFeats']);
+	$throws = json_encode($_SESSION['throws']);
+	$stats = json_encode($_SESSION['Stats']);
+
+	echo ("<script>builderChararcter('" . $_SESSION['class'] . "', '" . $_SESSION['race'] . "', '" . $skills . "', '" . $equipment . "', '" . $_SESSION['gold'] . "', '" . $cantrips . "', '" . $spells . "', '" . $raceFeats . "', " . $_SESSION['speed'] . ", '" . $_SESSION['size'] . "', '" . $languages . "', " . $_SESSION['HP'] . ", '" . $profs . "', '" . $classFeats . "', '" . $throws . "', '" . $_SESSION['hitdice'] . "', '" . $_SESSION['subclass'] . "', '".$stats."')</script>");
 }
 ?>

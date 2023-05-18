@@ -89,7 +89,7 @@ if(isset($_POST['Submit'])){
                         }
                         else{
                             getInfo();
-                            // header("Location: character-sheet.php");
+                            header("Location: character-sheet.view.php?builder=true");
                         }
                     }
                 }
@@ -99,7 +99,7 @@ if(isset($_POST['Submit'])){
     else if($_POST['hidden'] == "subclass"){
         $_SESSION['subclass'] = $_POST['subclass'];
         getInfo();
-        // header("Location: character-sheet.php");
+        header("Location: character-sheet.view.php?builder=true");
     }
 }
 else{
